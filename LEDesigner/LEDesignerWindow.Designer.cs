@@ -30,14 +30,18 @@
             this.colorButton = new System.Windows.Forms.Button();
             this.settingsPanel = new System.Windows.Forms.Panel();
             this.frameConfig = new System.Windows.Forms.GroupBox();
+            this.postVal = new System.Windows.Forms.NumericUpDown();
+            this.preVal = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.scrollConfig = new System.Windows.Forms.GroupBox();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.designArea = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ovrwrMatrix = new System.Windows.Forms.Button();
             this.updMatrix = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,14 +53,21 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.designArea = new System.Windows.Forms.Panel();
             this.chooseColor = new System.Windows.Forms.ColorDialog();
+            this.savePattern = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             this.settingsPanel.SuspendLayout();
+            this.frameConfig.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.postVal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.preVal)).BeginInit();
             this.scrollConfig.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.colVal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rowVal)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -66,8 +77,8 @@
             this.panel1.Controls.Add(this.colorPrev);
             this.panel1.Controls.Add(this.colorButton);
             this.panel1.Controls.Add(this.settingsPanel);
-            this.panel1.Controls.Add(this.designArea);
             this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(-4, 44);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(799, 559);
@@ -84,6 +95,7 @@
             this.saveDesign.Size = new System.Drawing.Size(56, 114);
             this.saveDesign.TabIndex = 4;
             this.saveDesign.UseVisualStyleBackColor = false;
+            this.saveDesign.Click += new System.EventHandler(this.saveDesign_Click);
             // 
             // colorPrev
             // 
@@ -120,13 +132,51 @@
             // 
             // frameConfig
             // 
+            this.frameConfig.Controls.Add(this.postVal);
+            this.frameConfig.Controls.Add(this.preVal);
+            this.frameConfig.Controls.Add(this.label5);
+            this.frameConfig.Controls.Add(this.label1);
             this.frameConfig.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.frameConfig.Location = new System.Drawing.Point(203, 3);
+            this.frameConfig.Location = new System.Drawing.Point(149, 3);
             this.frameConfig.Name = "frameConfig";
-            this.frameConfig.Size = new System.Drawing.Size(285, 101);
+            this.frameConfig.Size = new System.Drawing.Size(339, 101);
             this.frameConfig.TabIndex = 1;
             this.frameConfig.TabStop = false;
             this.frameConfig.Text = "Frames";
+            // 
+            // postVal
+            // 
+            this.postVal.Location = new System.Drawing.Point(83, 60);
+            this.postVal.Name = "postVal";
+            this.postVal.Size = new System.Drawing.Size(36, 20);
+            this.postVal.TabIndex = 3;
+            this.postVal.ValueChanged += new System.EventHandler(this.postVal_ValueChanged);
+            // 
+            // preVal
+            // 
+            this.preVal.Location = new System.Drawing.Point(83, 34);
+            this.preVal.Name = "preVal";
+            this.preVal.Size = new System.Drawing.Size(36, 20);
+            this.preVal.TabIndex = 2;
+            this.preVal.ValueChanged += new System.EventHandler(this.preVal_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(14, 62);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Post-Frames:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Pre-Frames:";
             // 
             // scrollConfig
             // 
@@ -137,7 +187,7 @@
             this.scrollConfig.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.scrollConfig.Location = new System.Drawing.Point(13, 3);
             this.scrollConfig.Name = "scrollConfig";
-            this.scrollConfig.Size = new System.Drawing.Size(180, 102);
+            this.scrollConfig.Size = new System.Drawing.Size(130, 102);
             this.scrollConfig.TabIndex = 0;
             this.scrollConfig.TabStop = false;
             this.scrollConfig.Text = "Scroll Direction";
@@ -146,7 +196,7 @@
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(31, 74);
+            this.radioButton4.Location = new System.Drawing.Point(15, 71);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(92, 17);
             this.radioButton4.TabIndex = 3;
@@ -158,7 +208,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(31, 57);
+            this.radioButton3.Location = new System.Drawing.Point(15, 54);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(92, 17);
             this.radioButton3.TabIndex = 2;
@@ -170,7 +220,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(31, 40);
+            this.radioButton2.Location = new System.Drawing.Point(15, 37);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(83, 17);
             this.radioButton2.TabIndex = 1;
@@ -182,7 +232,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(31, 23);
+            this.radioButton1.Location = new System.Drawing.Point(15, 20);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(83, 17);
             this.radioButton1.TabIndex = 0;
@@ -190,17 +240,6 @@
             this.radioButton1.Text = "Right to Left";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // designArea
-            // 
-            this.designArea.AutoScroll = true;
-            this.designArea.BackColor = System.Drawing.Color.DarkGray;
-            this.designArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.designArea.Location = new System.Drawing.Point(152, 21);
-            this.designArea.Name = "designArea";
-            this.designArea.Size = new System.Drawing.Size(629, 399);
-            this.designArea.TabIndex = 1;
-            this.designArea.Paint += new System.Windows.Forms.PaintEventHandler(this.designArea_Paint);
             // 
             // panel2
             // 
@@ -220,6 +259,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBox1.Controls.Add(this.ovrwrMatrix);
             this.groupBox1.Controls.Add(this.updMatrix);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -228,16 +268,27 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox1.Location = new System.Drawing.Point(3, 250);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(129, 118);
+            this.groupBox1.Size = new System.Drawing.Size(129, 138);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Matrix Size:";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // ovrwrMatrix
+            // 
+            this.ovrwrMatrix.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ovrwrMatrix.Location = new System.Drawing.Point(33, 107);
+            this.ovrwrMatrix.Name = "ovrwrMatrix";
+            this.ovrwrMatrix.Size = new System.Drawing.Size(60, 21);
+            this.ovrwrMatrix.TabIndex = 11;
+            this.ovrwrMatrix.Text = "Overwrite";
+            this.ovrwrMatrix.UseVisualStyleBackColor = true;
+            this.ovrwrMatrix.Click += new System.EventHandler(this.ovrwrMatrix_Click);
+            // 
             // updMatrix
             // 
             this.updMatrix.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.updMatrix.Location = new System.Drawing.Point(39, 82);
+            this.updMatrix.Location = new System.Drawing.Point(38, 80);
             this.updMatrix.Name = "updMatrix";
             this.updMatrix.Size = new System.Drawing.Size(51, 21);
             this.updMatrix.TabIndex = 10;
@@ -370,9 +421,34 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.LightGray;
+            this.panel3.Controls.Add(this.designArea);
+            this.panel3.Location = new System.Drawing.Point(152, 14);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(629, 409);
+            this.panel3.TabIndex = 5;
+            // 
+            // designArea
+            // 
+            this.designArea.AutoScroll = true;
+            this.designArea.BackColor = System.Drawing.Color.DarkGray;
+            this.designArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.designArea.Location = new System.Drawing.Point(15, 14);
+            this.designArea.Name = "designArea";
+            this.designArea.Size = new System.Drawing.Size(600, 384);
+            this.designArea.TabIndex = 1;
+            this.designArea.Paint += new System.Windows.Forms.PaintEventHandler(this.designArea_Paint);
+            // 
             // chooseColor
             // 
             this.chooseColor.FullOpen = true;
+            // 
+            // savePattern
+            // 
+            this.savePattern.DefaultExt = "txt";
+            this.savePattern.Filter = "\"txt files|*.txt\"";
             // 
             // LEDMD
             // 
@@ -382,11 +458,17 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(792, 641);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "LEDMD";
             this.Text = "LEDesigner";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.settingsPanel.ResumeLayout(false);
+            this.frameConfig.ResumeLayout(false);
+            this.frameConfig.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.postVal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.preVal)).EndInit();
             this.scrollConfig.ResumeLayout(false);
             this.scrollConfig.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -395,6 +477,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.colVal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rowVal)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -427,6 +510,13 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.Button ovrwrMatrix;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown postVal;
+        private System.Windows.Forms.NumericUpDown preVal;
+        private System.Windows.Forms.SaveFileDialog savePattern;
     }
 }
 
