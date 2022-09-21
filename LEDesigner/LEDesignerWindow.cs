@@ -22,6 +22,8 @@ namespace LEDMatrixController {
         
         int rows;
         int cols;
+        int realRows;
+        int realCols;
         int mode = 0;
         int scrollMode = 0;
         int preFrameCount = 0;
@@ -95,10 +97,13 @@ namespace LEDMatrixController {
             rows = (int)rowVal.Value;
             cols = (int)colVal.Value;
 
-            /*if (true) {
-                rows = (int)rowVal.Value;
-                cols = (int)colVal.Value;
-            }*/
+            if(mode != 1) {
+                realRows = rows;
+                realCols = cols;
+            } else {
+                realRows = (int)realRow.Value;
+                realCols = (int)realCol.Value;
+            }
 
             matrixButtons = new System.Windows.Forms.Button[rows,cols];
 
@@ -221,6 +226,8 @@ namespace LEDMatrixController {
             if (matrixColors != null) {
                 FileStream saveFile;
                 StreamWriter saveWriter;
+                String filePath = "";
+                bool success = false;
 
                 if (savePattern.ShowDialog() == DialogResult.OK) {
                     if ((saveFile = savePattern.OpenFile() as FileStream) != null) {
@@ -235,9 +242,37 @@ namespace LEDMatrixController {
                             saveWriter.WriteLine("-");
                         }
 
+                        filePath = Path.GetDirectoryName(saveFile.Name) + @"\config.cfg";
+                        success = true;
+
                         saveWriter.Close();
                         saveFile.Close();
                     }
+                }
+
+                if (success) {
+                    
+                    if (File.Exists(filePath)) {
+                        File.Delete(filePath);
+                    }
+
+                    saveFile = new FileStream(filePath, FileMode.Create);
+                    saveWriter = new StreamWriter(saveFile);
+
+                    saveWriter.WriteLine("!Mode: 1 is static, 2 is scrolling, 3 is frame by frame");
+                    saveWriter.WriteLine("mode = " + mode);
+                    saveWriter.WriteLine("!---------------------------------------------------------------------------------");
+                    saveWriter.WriteLine("!Matrix Size: size of your LED matrix strip based on rows and columns");
+                    saveWriter.WriteLine("rows = " + realRows);
+                    saveWriter.WriteLine("columns = " + realCols);
+                    saveWriter.WriteLine("!---------------------------------------------------------------------------------");
+                    saveWriter.WriteLine("!Scroll Mode: 1 right to left, 2 left to right, 3 top to bottom, 4 bottom to top");
+                    saveWriter.WriteLine("scrollMode = " + scrollMode);
+                    saveWriter.WriteLine("!---------------------------------------------------------------------------------");
+                    saveWriter.WriteLine("!In-between frames: set the number of frames before and after a non-static pattern");
+                    saveWriter.WriteLine("preFrameCount = " + preFrameCount);
+                    saveWriter.WriteLine("postFrameCount = " + postFrameCount);
+
                 }
             }
         }
