@@ -28,13 +28,20 @@
             this.saveDesign = new System.Windows.Forms.Button();
             this.colorPrev = new System.Windows.Forms.Panel();
             this.colorButton = new System.Windows.Forms.Button();
-            this.settingsPanel = new System.Windows.Forms.Panel();
+            this.fbfConfig = new System.Windows.Forms.GroupBox();
+            this.updateFrameCount = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.numOfFrames = new System.Windows.Forms.NumericUpDown();
             this.frameConfig = new System.Windows.Forms.GroupBox();
             this.postVal = new System.Windows.Forms.NumericUpDown();
             this.preVal = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.scrollConfig = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.realCol = new System.Windows.Forms.NumericUpDown();
+            this.realRow = new System.Windows.Forms.NumericUpDown();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -54,43 +61,56 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.prevFrame = new System.Windows.Forms.Button();
+            this.nextFrame = new System.Windows.Forms.Button();
             this.designArea = new System.Windows.Forms.Panel();
             this.chooseColor = new System.Windows.Forms.ColorDialog();
             this.savePattern = new System.Windows.Forms.SaveFileDialog();
-            this.realRow = new System.Windows.Forms.NumericUpDown();
-            this.realCol = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.nextFrame = new System.Windows.Forms.Button();
-            this.prevFrame = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.updateFrameCount = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.gpioPin = new System.Windows.Forms.NumericUpDown();
+            this.freq = new System.Windows.Forms.NumericUpDown();
+            this.dma = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.brightnessLED = new System.Windows.Forms.NumericUpDown();
+            this.invertSignal = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.animateSpd = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
-            this.settingsPanel.SuspendLayout();
+            this.fbfConfig.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numOfFrames)).BeginInit();
             this.frameConfig.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.postVal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.preVal)).BeginInit();
             this.scrollConfig.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.realCol)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.realRow)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.colVal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rowVal)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.realRow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.realCol)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gpioPin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.freq)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dma)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brightnessLED)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.animateSpd)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.Controls.Add(this.tabControl1);
             this.panel1.Controls.Add(this.saveDesign);
             this.panel1.Controls.Add(this.colorPrev);
             this.panel1.Controls.Add(this.colorButton);
-            this.panel1.Controls.Add(this.settingsPanel);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(-4, 44);
@@ -133,17 +153,46 @@
             this.colorButton.UseVisualStyleBackColor = false;
             this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
             // 
-            // settingsPanel
+            // fbfConfig
             // 
-            this.settingsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.settingsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.settingsPanel.Controls.Add(this.groupBox2);
-            this.settingsPanel.Controls.Add(this.frameConfig);
-            this.settingsPanel.Controls.Add(this.scrollConfig);
-            this.settingsPanel.Location = new System.Drawing.Point(214, 429);
-            this.settingsPanel.Name = "settingsPanel";
-            this.settingsPanel.Size = new System.Drawing.Size(505, 114);
-            this.settingsPanel.TabIndex = 2;
+            this.fbfConfig.Controls.Add(this.updateFrameCount);
+            this.fbfConfig.Controls.Add(this.label8);
+            this.fbfConfig.Controls.Add(this.numOfFrames);
+            this.fbfConfig.Enabled = false;
+            this.fbfConfig.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.fbfConfig.Location = new System.Drawing.Point(376, 0);
+            this.fbfConfig.Name = "fbfConfig";
+            this.fbfConfig.Size = new System.Drawing.Size(115, 87);
+            this.fbfConfig.TabIndex = 2;
+            this.fbfConfig.TabStop = false;
+            this.fbfConfig.Text = "F-By-F";
+            // 
+            // updateFrameCount
+            // 
+            this.updateFrameCount.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.updateFrameCount.Location = new System.Drawing.Point(30, 52);
+            this.updateFrameCount.Name = "updateFrameCount";
+            this.updateFrameCount.Size = new System.Drawing.Size(55, 21);
+            this.updateFrameCount.TabIndex = 2;
+            this.updateFrameCount.Text = "Update";
+            this.updateFrameCount.UseVisualStyleBackColor = true;
+            this.updateFrameCount.Click += new System.EventHandler(this.updateFrameCount_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(15, 24);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Frames:";
+            // 
+            // numOfFrames
+            // 
+            this.numOfFrames.Location = new System.Drawing.Point(59, 22);
+            this.numOfFrames.Name = "numOfFrames";
+            this.numOfFrames.Size = new System.Drawing.Size(36, 20);
+            this.numOfFrames.TabIndex = 1;
             // 
             // frameConfig
             // 
@@ -151,47 +200,50 @@
             this.frameConfig.Controls.Add(this.preVal);
             this.frameConfig.Controls.Add(this.label5);
             this.frameConfig.Controls.Add(this.label1);
+            this.frameConfig.Enabled = false;
             this.frameConfig.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.frameConfig.Location = new System.Drawing.Point(248, 3);
+            this.frameConfig.Location = new System.Drawing.Point(241, 0);
             this.frameConfig.Name = "frameConfig";
-            this.frameConfig.Size = new System.Drawing.Size(129, 102);
+            this.frameConfig.Size = new System.Drawing.Size(129, 87);
             this.frameConfig.TabIndex = 1;
             this.frameConfig.TabStop = false;
-            this.frameConfig.Text = "In-Between";
+            this.frameConfig.Text = "In-Between (seconds)";
             // 
             // postVal
             // 
-            this.postVal.Location = new System.Drawing.Point(78, 61);
+            this.postVal.DecimalPlaces = 1;
+            this.postVal.Location = new System.Drawing.Point(78, 52);
             this.postVal.Name = "postVal";
-            this.postVal.Size = new System.Drawing.Size(36, 20);
+            this.postVal.Size = new System.Drawing.Size(45, 20);
             this.postVal.TabIndex = 3;
             this.postVal.ValueChanged += new System.EventHandler(this.postVal_ValueChanged);
             // 
             // preVal
             // 
-            this.preVal.Location = new System.Drawing.Point(78, 35);
+            this.preVal.DecimalPlaces = 1;
+            this.preVal.Location = new System.Drawing.Point(78, 26);
             this.preVal.Name = "preVal";
-            this.preVal.Size = new System.Drawing.Size(36, 20);
+            this.preVal.Size = new System.Drawing.Size(45, 20);
             this.preVal.TabIndex = 2;
             this.preVal.ValueChanged += new System.EventHandler(this.preVal_ValueChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 63);
+            this.label5.Location = new System.Drawing.Point(8, 54);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 13);
             this.label5.TabIndex = 1;
-            this.label5.Text = "Post-Frames:";
+            this.label5.Text = "Post-Pattern:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 36);
+            this.label1.Location = new System.Drawing.Point(9, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Pre-Frames:";
+            this.label1.Text = "Pre-Pattern:";
             // 
             // scrollConfig
             // 
@@ -203,19 +255,54 @@
             this.scrollConfig.Controls.Add(this.radioButton3);
             this.scrollConfig.Controls.Add(this.radioButton2);
             this.scrollConfig.Controls.Add(this.radioButton1);
+            this.scrollConfig.Enabled = false;
             this.scrollConfig.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.scrollConfig.Location = new System.Drawing.Point(13, 3);
+            this.scrollConfig.Location = new System.Drawing.Point(6, 0);
             this.scrollConfig.Name = "scrollConfig";
-            this.scrollConfig.Size = new System.Drawing.Size(229, 102);
+            this.scrollConfig.Size = new System.Drawing.Size(229, 87);
             this.scrollConfig.TabIndex = 0;
             this.scrollConfig.TabStop = false;
             this.scrollConfig.Text = "Scrolling Settings";
             this.scrollConfig.Enter += new System.EventHandler(this.scrollConfig_Enter);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(121, 54);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(50, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Real Col:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(121, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Real Row:";
+            // 
+            // realCol
+            // 
+            this.realCol.Location = new System.Drawing.Point(182, 52);
+            this.realCol.Name = "realCol";
+            this.realCol.Size = new System.Drawing.Size(36, 20);
+            this.realCol.TabIndex = 5;
+            this.realCol.ValueChanged += new System.EventHandler(this.realCol_ValueChanged);
+            // 
+            // realRow
+            // 
+            this.realRow.Location = new System.Drawing.Point(182, 24);
+            this.realRow.Name = "realRow";
+            this.realRow.Size = new System.Drawing.Size(36, 20);
+            this.realRow.TabIndex = 4;
+            this.realRow.ValueChanged += new System.EventHandler(this.realRow_ValueChanged);
+            // 
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(15, 71);
+            this.radioButton4.Location = new System.Drawing.Point(15, 66);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(92, 17);
             this.radioButton4.TabIndex = 3;
@@ -227,7 +314,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(15, 54);
+            this.radioButton3.Location = new System.Drawing.Point(15, 49);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(92, 17);
             this.radioButton3.TabIndex = 2;
@@ -239,7 +326,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(15, 37);
+            this.radioButton2.Location = new System.Drawing.Point(15, 32);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(83, 17);
             this.radioButton2.TabIndex = 1;
@@ -251,7 +338,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(15, 20);
+            this.radioButton1.Location = new System.Drawing.Point(15, 15);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(83, 17);
             this.radioButton1.TabIndex = 0;
@@ -329,7 +416,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(31, 23);
+            this.label3.Location = new System.Drawing.Point(18, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 8;
@@ -451,6 +538,36 @@
             this.panel3.Size = new System.Drawing.Size(629, 409);
             this.panel3.TabIndex = 5;
             // 
+            // prevFrame
+            // 
+            this.prevFrame.BackColor = System.Drawing.Color.DimGray;
+            this.prevFrame.Enabled = false;
+            this.prevFrame.FlatAppearance.BorderSize = 0;
+            this.prevFrame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.prevFrame.ForeColor = System.Drawing.Color.Crimson;
+            this.prevFrame.Location = new System.Drawing.Point(15, 374);
+            this.prevFrame.Name = "prevFrame";
+            this.prevFrame.Size = new System.Drawing.Size(41, 35);
+            this.prevFrame.TabIndex = 3;
+            this.prevFrame.Text = "<";
+            this.prevFrame.UseVisualStyleBackColor = false;
+            this.prevFrame.Click += new System.EventHandler(this.prevFrame_Click);
+            // 
+            // nextFrame
+            // 
+            this.nextFrame.BackColor = System.Drawing.Color.DimGray;
+            this.nextFrame.Enabled = false;
+            this.nextFrame.FlatAppearance.BorderSize = 0;
+            this.nextFrame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextFrame.ForeColor = System.Drawing.Color.Lime;
+            this.nextFrame.Location = new System.Drawing.Point(56, 374);
+            this.nextFrame.Name = "nextFrame";
+            this.nextFrame.Size = new System.Drawing.Size(41, 35);
+            this.nextFrame.TabIndex = 2;
+            this.nextFrame.Text = ">";
+            this.nextFrame.UseVisualStyleBackColor = false;
+            this.nextFrame.Click += new System.EventHandler(this.nextFrame_Click);
+            // 
             // designArea
             // 
             this.designArea.AutoScroll = true;
@@ -471,100 +588,200 @@
             this.savePattern.DefaultExt = "txt";
             this.savePattern.Filter = "\"txt files|*.txt\"";
             // 
-            // realRow
+            // tabControl1
             // 
-            this.realRow.Location = new System.Drawing.Point(182, 34);
-            this.realRow.Name = "realRow";
-            this.realRow.Size = new System.Drawing.Size(36, 20);
-            this.realRow.TabIndex = 4;
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(215, 429);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.Padding = new System.Drawing.Point(6, 1);
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(505, 114);
+            this.tabControl1.TabIndex = 0;
             // 
-            // realCol
+            // tabPage1
             // 
-            this.realCol.Location = new System.Drawing.Point(182, 62);
-            this.realCol.Name = "realCol";
-            this.realCol.Size = new System.Drawing.Size(36, 20);
-            this.realCol.TabIndex = 5;
+            this.tabPage1.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage1.Controls.Add(this.fbfConfig);
+            this.tabPage1.Controls.Add(this.scrollConfig);
+            this.tabPage1.Controls.Add(this.frameConfig);
+            this.tabPage1.Location = new System.Drawing.Point(4, 20);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(497, 90);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Pattern Settings";
             // 
-            // label6
+            // tabPage2
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(121, 39);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Real Row:";
+            this.tabPage2.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage2.Controls.Add(this.animateSpd);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.invertSignal);
+            this.tabPage2.Controls.Add(this.brightnessLED);
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.dma);
+            this.tabPage2.Controls.Add(this.freq);
+            this.tabPage2.Controls.Add(this.gpioPin);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Location = new System.Drawing.Point(4, 20);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(497, 90);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "LED Settings";
             // 
-            // label7
+            // label9
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(128, 64);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Real Col:";
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label9.Location = new System.Drawing.Point(11, 8);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "GPIO Pin:";
             // 
-            // nextFrame
+            // label10
             // 
-            this.nextFrame.BackColor = System.Drawing.Color.Gray;
-            this.nextFrame.FlatAppearance.BorderSize = 0;
-            this.nextFrame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextFrame.Location = new System.Drawing.Point(574, 374);
-            this.nextFrame.Name = "nextFrame";
-            this.nextFrame.Size = new System.Drawing.Size(41, 34);
-            this.nextFrame.TabIndex = 2;
-            this.nextFrame.Text = ">";
-            this.nextFrame.UseVisualStyleBackColor = false;
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label10.Location = new System.Drawing.Point(11, 34);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Frequency (khz):";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
-            // prevFrame
+            // label11
             // 
-            this.prevFrame.BackColor = System.Drawing.Color.Gray;
-            this.prevFrame.FlatAppearance.BorderSize = 0;
-            this.prevFrame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.prevFrame.Location = new System.Drawing.Point(15, 374);
-            this.prevFrame.Name = "prevFrame";
-            this.prevFrame.Size = new System.Drawing.Size(41, 34);
-            this.prevFrame.TabIndex = 3;
-            this.prevFrame.Text = "<";
-            this.prevFrame.UseVisualStyleBackColor = false;
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label11.Location = new System.Drawing.Point(11, 60);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(34, 13);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "DMA:";
             // 
-            // groupBox2
+            // gpioPin
             // 
-            this.groupBox2.Controls.Add(this.updateFrameCount);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.numericUpDown1);
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox2.Location = new System.Drawing.Point(383, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(104, 102);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "F-By-F";
+            this.gpioPin.Location = new System.Drawing.Point(115, 6);
+            this.gpioPin.Name = "gpioPin";
+            this.gpioPin.Size = new System.Drawing.Size(45, 20);
+            this.gpioPin.TabIndex = 5;
+            this.gpioPin.Value = new decimal(new int[] {
+            18,
+            0,
+            0,
+            0});
+            this.gpioPin.ValueChanged += new System.EventHandler(this.gpioPin_ValueChanged);
             // 
-            // label8
+            // freq
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 34);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Frames:";
+            this.freq.Location = new System.Drawing.Point(115, 32);
+            this.freq.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.freq.Name = "freq";
+            this.freq.Size = new System.Drawing.Size(45, 20);
+            this.freq.TabIndex = 6;
+            this.freq.Value = new decimal(new int[] {
+            800,
+            0,
+            0,
+            0});
+            this.freq.ValueChanged += new System.EventHandler(this.freq_ValueChanged);
             // 
-            // numericUpDown1
+            // dma
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(54, 32);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(36, 20);
-            this.numericUpDown1.TabIndex = 1;
+            this.dma.Location = new System.Drawing.Point(115, 58);
+            this.dma.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.dma.Name = "dma";
+            this.dma.Size = new System.Drawing.Size(45, 20);
+            this.dma.TabIndex = 7;
+            this.dma.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.dma.ValueChanged += new System.EventHandler(this.dma_ValueChanged);
             // 
-            // updateFrameCount
+            // label12
             // 
-            this.updateFrameCount.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.updateFrameCount.Location = new System.Drawing.Point(25, 62);
-            this.updateFrameCount.Name = "updateFrameCount";
-            this.updateFrameCount.Size = new System.Drawing.Size(55, 21);
-            this.updateFrameCount.TabIndex = 2;
-            this.updateFrameCount.Text = "Update";
-            this.updateFrameCount.UseVisualStyleBackColor = true;
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label12.Location = new System.Drawing.Point(195, 8);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(62, 13);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "Brightness: ";
+            // 
+            // brightnessLED
+            // 
+            this.brightnessLED.Location = new System.Drawing.Point(305, 6);
+            this.brightnessLED.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.brightnessLED.Name = "brightnessLED";
+            this.brightnessLED.Size = new System.Drawing.Size(45, 20);
+            this.brightnessLED.TabIndex = 9;
+            this.brightnessLED.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.brightnessLED.ValueChanged += new System.EventHandler(this.brightnessLED_ValueChanged);
+            // 
+            // invertSignal
+            // 
+            this.invertSignal.AutoSize = true;
+            this.invertSignal.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.invertSignal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.invertSignal.Location = new System.Drawing.Point(194, 60);
+            this.invertSignal.Name = "invertSignal";
+            this.invertSignal.Size = new System.Drawing.Size(88, 17);
+            this.invertSignal.TabIndex = 11;
+            this.invertSignal.Text = "Invert Signal:";
+            this.invertSignal.UseVisualStyleBackColor = true;
+            this.invertSignal.CheckedChanged += new System.EventHandler(this.invertSignal_CheckedChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label13.Location = new System.Drawing.Point(195, 34);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(90, 13);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "Animation Speed:";
+            // 
+            // animateSpd
+            // 
+            this.animateSpd.DecimalPlaces = 1;
+            this.animateSpd.Location = new System.Drawing.Point(305, 34);
+            this.animateSpd.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.animateSpd.Name = "animateSpd";
+            this.animateSpd.Size = new System.Drawing.Size(45, 20);
+            this.animateSpd.TabIndex = 13;
+            this.animateSpd.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.animateSpd.ValueChanged += new System.EventHandler(this.animateSpd_ValueChanged);
             // 
             // LEDMD
             // 
@@ -580,13 +797,17 @@
             this.Text = "LEDesigner";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
-            this.settingsPanel.ResumeLayout(false);
+            this.fbfConfig.ResumeLayout(false);
+            this.fbfConfig.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numOfFrames)).EndInit();
             this.frameConfig.ResumeLayout(false);
             this.frameConfig.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.postVal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.preVal)).EndInit();
             this.scrollConfig.ResumeLayout(false);
             this.scrollConfig.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.realCol)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.realRow)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -594,11 +815,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.colVal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rowVal)).EndInit();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.realRow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.realCol)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gpioPin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.freq)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brightnessLED)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.animateSpd)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -621,7 +846,6 @@
         private System.Windows.Forms.Panel designArea;
         private System.Windows.Forms.Button updMatrix;
         private System.Windows.Forms.ColorDialog chooseColor;
-        private System.Windows.Forms.Panel settingsPanel;
         private System.Windows.Forms.Button colorButton;
         private System.Windows.Forms.Panel colorPrev;
         private System.Windows.Forms.GroupBox scrollConfig;
@@ -644,10 +868,24 @@
         private System.Windows.Forms.NumericUpDown realRow;
         private System.Windows.Forms.Button prevFrame;
         private System.Windows.Forms.Button nextFrame;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox fbfConfig;
         private System.Windows.Forms.Button updateFrameCount;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numOfFrames;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown dma;
+        private System.Windows.Forms.NumericUpDown freq;
+        private System.Windows.Forms.NumericUpDown gpioPin;
+        private System.Windows.Forms.NumericUpDown animateSpd;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox invertSignal;
+        private System.Windows.Forms.NumericUpDown brightnessLED;
+        private System.Windows.Forms.Label label12;
     }
 }
 
