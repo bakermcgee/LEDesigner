@@ -25,18 +25,12 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LEDMD));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.saveDesign = new System.Windows.Forms.Button();
-            this.colorPrev = new System.Windows.Forms.Panel();
-            this.colorButton = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.fbfConfig = new System.Windows.Forms.GroupBox();
             this.updateFrameCount = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.numOfFrames = new System.Windows.Forms.NumericUpDown();
-            this.frameConfig = new System.Windows.Forms.GroupBox();
-            this.postVal = new System.Windows.Forms.NumericUpDown();
-            this.preVal = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.scrollConfig = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -46,6 +40,26 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.frameConfig = new System.Windows.Forms.GroupBox();
+            this.postVal = new System.Windows.Forms.NumericUpDown();
+            this.preVal = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.animateSpd = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.invertSignal = new System.Windows.Forms.CheckBox();
+            this.brightnessLED = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dma = new System.Windows.Forms.NumericUpDown();
+            this.freq = new System.Windows.Forms.NumericUpDown();
+            this.gpioPin = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.saveDesign = new System.Windows.Forms.Button();
+            this.colorPrev = new System.Windows.Forms.Panel();
+            this.colorButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ovrwrMatrix = new System.Windows.Forms.Button();
@@ -61,52 +75,44 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.duplicatePrev = new System.Windows.Forms.CheckBox();
+            this.duplicateNext = new System.Windows.Forms.CheckBox();
             this.prevFrame = new System.Windows.Forms.Button();
             this.nextFrame = new System.Windows.Forms.Button();
             this.designArea = new System.Windows.Forms.Panel();
             this.chooseColor = new System.Windows.Forms.ColorDialog();
             this.savePattern = new System.Windows.Forms.SaveFileDialog();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.gpioPin = new System.Windows.Forms.NumericUpDown();
-            this.freq = new System.Windows.Forms.NumericUpDown();
-            this.dma = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
-            this.brightnessLED = new System.Windows.Forms.NumericUpDown();
-            this.invertSignal = new System.Windows.Forms.CheckBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.animateSpd = new System.Windows.Forms.NumericUpDown();
+            this.fbfPages = new System.Windows.Forms.Panel();
+            this.saveBar = new System.Windows.Forms.ProgressBar();
             this.panel1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.fbfConfig.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numOfFrames)).BeginInit();
-            this.frameConfig.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.postVal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.preVal)).BeginInit();
             this.scrollConfig.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.realCol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.realRow)).BeginInit();
+            this.frameConfig.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.postVal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.preVal)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.animateSpd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brightnessLED)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dma)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.freq)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gpioPin)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.colVal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rowVal)).BeginInit();
             this.panel3.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gpioPin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.freq)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dma)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brightnessLED)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.animateSpd)).BeginInit();
+            this.fbfPages.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.Controls.Add(this.saveBar);
             this.panel1.Controls.Add(this.tabControl1);
             this.panel1.Controls.Add(this.saveDesign);
             this.panel1.Controls.Add(this.colorPrev);
@@ -118,40 +124,29 @@
             this.panel1.Size = new System.Drawing.Size(799, 559);
             this.panel1.TabIndex = 0;
             // 
-            // saveDesign
+            // tabControl1
             // 
-            this.saveDesign.BackColor = System.Drawing.Color.DarkGray;
-            this.saveDesign.FlatAppearance.BorderSize = 0;
-            this.saveDesign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveDesign.Image = ((System.Drawing.Image)(resources.GetObject("saveDesign.Image")));
-            this.saveDesign.Location = new System.Drawing.Point(725, 429);
-            this.saveDesign.Name = "saveDesign";
-            this.saveDesign.Size = new System.Drawing.Size(56, 114);
-            this.saveDesign.TabIndex = 4;
-            this.saveDesign.UseVisualStyleBackColor = false;
-            this.saveDesign.Click += new System.EventHandler(this.saveDesign_Click);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(215, 429);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.Padding = new System.Drawing.Point(6, 1);
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(505, 114);
+            this.tabControl1.TabIndex = 0;
             // 
-            // colorPrev
+            // tabPage1
             // 
-            this.colorPrev.BackColor = System.Drawing.Color.White;
-            this.colorPrev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPrev.Location = new System.Drawing.Point(151, 525);
-            this.colorPrev.Name = "colorPrev";
-            this.colorPrev.Size = new System.Drawing.Size(58, 18);
-            this.colorPrev.TabIndex = 3;
-            // 
-            // colorButton
-            // 
-            this.colorButton.BackColor = System.Drawing.Color.DarkGray;
-            this.colorButton.FlatAppearance.BorderSize = 0;
-            this.colorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.colorButton.Image = ((System.Drawing.Image)(resources.GetObject("colorButton.Image")));
-            this.colorButton.Location = new System.Drawing.Point(152, 429);
-            this.colorButton.Name = "colorButton";
-            this.colorButton.Size = new System.Drawing.Size(56, 93);
-            this.colorButton.TabIndex = 0;
-            this.colorButton.UseVisualStyleBackColor = false;
-            this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
+            this.tabPage1.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage1.Controls.Add(this.fbfConfig);
+            this.tabPage1.Controls.Add(this.scrollConfig);
+            this.tabPage1.Controls.Add(this.frameConfig);
+            this.tabPage1.Location = new System.Drawing.Point(4, 20);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(497, 90);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Pattern Settings";
             // 
             // fbfConfig
             // 
@@ -193,57 +188,6 @@
             this.numOfFrames.Name = "numOfFrames";
             this.numOfFrames.Size = new System.Drawing.Size(36, 20);
             this.numOfFrames.TabIndex = 1;
-            // 
-            // frameConfig
-            // 
-            this.frameConfig.Controls.Add(this.postVal);
-            this.frameConfig.Controls.Add(this.preVal);
-            this.frameConfig.Controls.Add(this.label5);
-            this.frameConfig.Controls.Add(this.label1);
-            this.frameConfig.Enabled = false;
-            this.frameConfig.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.frameConfig.Location = new System.Drawing.Point(241, 0);
-            this.frameConfig.Name = "frameConfig";
-            this.frameConfig.Size = new System.Drawing.Size(129, 87);
-            this.frameConfig.TabIndex = 1;
-            this.frameConfig.TabStop = false;
-            this.frameConfig.Text = "In-Between (seconds)";
-            // 
-            // postVal
-            // 
-            this.postVal.DecimalPlaces = 1;
-            this.postVal.Location = new System.Drawing.Point(78, 52);
-            this.postVal.Name = "postVal";
-            this.postVal.Size = new System.Drawing.Size(45, 20);
-            this.postVal.TabIndex = 3;
-            this.postVal.ValueChanged += new System.EventHandler(this.postVal_ValueChanged);
-            // 
-            // preVal
-            // 
-            this.preVal.DecimalPlaces = 1;
-            this.preVal.Location = new System.Drawing.Point(78, 26);
-            this.preVal.Name = "preVal";
-            this.preVal.Size = new System.Drawing.Size(45, 20);
-            this.preVal.TabIndex = 2;
-            this.preVal.ValueChanged += new System.EventHandler(this.preVal_ValueChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 54);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Post-Pattern:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Pre-Pattern:";
             // 
             // scrollConfig
             // 
@@ -346,6 +290,263 @@
             this.radioButton1.Text = "Right to Left";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // frameConfig
+            // 
+            this.frameConfig.Controls.Add(this.postVal);
+            this.frameConfig.Controls.Add(this.preVal);
+            this.frameConfig.Controls.Add(this.label5);
+            this.frameConfig.Controls.Add(this.label1);
+            this.frameConfig.Enabled = false;
+            this.frameConfig.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.frameConfig.Location = new System.Drawing.Point(241, 0);
+            this.frameConfig.Name = "frameConfig";
+            this.frameConfig.Size = new System.Drawing.Size(129, 87);
+            this.frameConfig.TabIndex = 1;
+            this.frameConfig.TabStop = false;
+            this.frameConfig.Text = "In-Between (seconds)";
+            // 
+            // postVal
+            // 
+            this.postVal.DecimalPlaces = 1;
+            this.postVal.Location = new System.Drawing.Point(78, 52);
+            this.postVal.Name = "postVal";
+            this.postVal.Size = new System.Drawing.Size(45, 20);
+            this.postVal.TabIndex = 3;
+            this.postVal.ValueChanged += new System.EventHandler(this.postVal_ValueChanged);
+            // 
+            // preVal
+            // 
+            this.preVal.DecimalPlaces = 1;
+            this.preVal.Location = new System.Drawing.Point(78, 26);
+            this.preVal.Name = "preVal";
+            this.preVal.Size = new System.Drawing.Size(45, 20);
+            this.preVal.TabIndex = 2;
+            this.preVal.ValueChanged += new System.EventHandler(this.preVal_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Post-Pattern:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Pre-Pattern:";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage2.Controls.Add(this.animateSpd);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.invertSignal);
+            this.tabPage2.Controls.Add(this.brightnessLED);
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.dma);
+            this.tabPage2.Controls.Add(this.freq);
+            this.tabPage2.Controls.Add(this.gpioPin);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Location = new System.Drawing.Point(4, 20);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(497, 90);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "LED Settings";
+            // 
+            // animateSpd
+            // 
+            this.animateSpd.DecimalPlaces = 1;
+            this.animateSpd.Location = new System.Drawing.Point(305, 34);
+            this.animateSpd.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.animateSpd.Name = "animateSpd";
+            this.animateSpd.Size = new System.Drawing.Size(45, 20);
+            this.animateSpd.TabIndex = 13;
+            this.animateSpd.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.animateSpd.ValueChanged += new System.EventHandler(this.animateSpd_ValueChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label13.Location = new System.Drawing.Point(195, 34);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(90, 13);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "Animation Speed:";
+            // 
+            // invertSignal
+            // 
+            this.invertSignal.AutoSize = true;
+            this.invertSignal.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.invertSignal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.invertSignal.Location = new System.Drawing.Point(194, 60);
+            this.invertSignal.Name = "invertSignal";
+            this.invertSignal.Size = new System.Drawing.Size(88, 17);
+            this.invertSignal.TabIndex = 11;
+            this.invertSignal.Text = "Invert Signal:";
+            this.invertSignal.UseVisualStyleBackColor = true;
+            this.invertSignal.CheckedChanged += new System.EventHandler(this.invertSignal_CheckedChanged);
+            // 
+            // brightnessLED
+            // 
+            this.brightnessLED.Location = new System.Drawing.Point(305, 6);
+            this.brightnessLED.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.brightnessLED.Name = "brightnessLED";
+            this.brightnessLED.Size = new System.Drawing.Size(45, 20);
+            this.brightnessLED.TabIndex = 9;
+            this.brightnessLED.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.brightnessLED.ValueChanged += new System.EventHandler(this.brightnessLED_ValueChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label12.Location = new System.Drawing.Point(195, 8);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(62, 13);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "Brightness: ";
+            // 
+            // dma
+            // 
+            this.dma.Location = new System.Drawing.Point(115, 58);
+            this.dma.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.dma.Name = "dma";
+            this.dma.Size = new System.Drawing.Size(45, 20);
+            this.dma.TabIndex = 7;
+            this.dma.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.dma.ValueChanged += new System.EventHandler(this.dma_ValueChanged);
+            // 
+            // freq
+            // 
+            this.freq.Location = new System.Drawing.Point(115, 32);
+            this.freq.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.freq.Name = "freq";
+            this.freq.Size = new System.Drawing.Size(45, 20);
+            this.freq.TabIndex = 6;
+            this.freq.Value = new decimal(new int[] {
+            800,
+            0,
+            0,
+            0});
+            this.freq.ValueChanged += new System.EventHandler(this.freq_ValueChanged);
+            // 
+            // gpioPin
+            // 
+            this.gpioPin.Location = new System.Drawing.Point(115, 6);
+            this.gpioPin.Name = "gpioPin";
+            this.gpioPin.Size = new System.Drawing.Size(45, 20);
+            this.gpioPin.TabIndex = 5;
+            this.gpioPin.Value = new decimal(new int[] {
+            18,
+            0,
+            0,
+            0});
+            this.gpioPin.ValueChanged += new System.EventHandler(this.gpioPin_ValueChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label11.Location = new System.Drawing.Point(11, 60);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(34, 13);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "DMA:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label10.Location = new System.Drawing.Point(11, 34);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Frequency (khz):";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label9.Location = new System.Drawing.Point(11, 8);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "GPIO Pin:";
+            // 
+            // saveDesign
+            // 
+            this.saveDesign.BackColor = System.Drawing.Color.DarkGray;
+            this.saveDesign.FlatAppearance.BorderSize = 0;
+            this.saveDesign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveDesign.Image = ((System.Drawing.Image)(resources.GetObject("saveDesign.Image")));
+            this.saveDesign.Location = new System.Drawing.Point(725, 429);
+            this.saveDesign.Name = "saveDesign";
+            this.saveDesign.Size = new System.Drawing.Size(56, 93);
+            this.saveDesign.TabIndex = 4;
+            this.saveDesign.UseVisualStyleBackColor = false;
+            this.saveDesign.Click += new System.EventHandler(this.saveDesign_Click);
+            // 
+            // colorPrev
+            // 
+            this.colorPrev.BackColor = System.Drawing.Color.White;
+            this.colorPrev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPrev.Location = new System.Drawing.Point(151, 525);
+            this.colorPrev.Name = "colorPrev";
+            this.colorPrev.Size = new System.Drawing.Size(58, 18);
+            this.colorPrev.TabIndex = 3;
+            // 
+            // colorButton
+            // 
+            this.colorButton.BackColor = System.Drawing.Color.DarkGray;
+            this.colorButton.FlatAppearance.BorderSize = 0;
+            this.colorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colorButton.Image = ((System.Drawing.Image)(resources.GetObject("colorButton.Image")));
+            this.colorButton.Location = new System.Drawing.Point(152, 429);
+            this.colorButton.Name = "colorButton";
+            this.colorButton.Size = new System.Drawing.Size(56, 93);
+            this.colorButton.TabIndex = 0;
+            this.colorButton.UseVisualStyleBackColor = false;
+            this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // panel2
             // 
@@ -530,13 +731,34 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.LightGray;
-            this.panel3.Controls.Add(this.prevFrame);
-            this.panel3.Controls.Add(this.nextFrame);
+            this.panel3.Controls.Add(this.fbfPages);
             this.panel3.Controls.Add(this.designArea);
             this.panel3.Location = new System.Drawing.Point(152, 14);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(629, 409);
             this.panel3.TabIndex = 5;
+            // 
+            // duplicatePrev
+            // 
+            this.duplicatePrev.AutoSize = true;
+            this.duplicatePrev.Location = new System.Drawing.Point(99, 10);
+            this.duplicatePrev.Name = "duplicatePrev";
+            this.duplicatePrev.Size = new System.Drawing.Size(159, 17);
+            this.duplicatePrev.TabIndex = 5;
+            this.duplicatePrev.Text = "Duplicate to Previous Frame";
+            this.duplicatePrev.UseVisualStyleBackColor = true;
+            this.duplicatePrev.CheckedChanged += new System.EventHandler(this.duplicatePrev_CheckedChanged);
+            // 
+            // duplicateNext
+            // 
+            this.duplicateNext.AutoSize = true;
+            this.duplicateNext.Location = new System.Drawing.Point(276, 10);
+            this.duplicateNext.Name = "duplicateNext";
+            this.duplicateNext.Size = new System.Drawing.Size(140, 17);
+            this.duplicateNext.TabIndex = 4;
+            this.duplicateNext.Text = "Duplicate to Next Frame";
+            this.duplicateNext.UseVisualStyleBackColor = true;
+            this.duplicateNext.CheckedChanged += new System.EventHandler(this.duplicateNext_CheckedChanged);
             // 
             // prevFrame
             // 
@@ -545,7 +767,7 @@
             this.prevFrame.FlatAppearance.BorderSize = 0;
             this.prevFrame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.prevFrame.ForeColor = System.Drawing.Color.Crimson;
-            this.prevFrame.Location = new System.Drawing.Point(15, 374);
+            this.prevFrame.Location = new System.Drawing.Point(-5, 0);
             this.prevFrame.Name = "prevFrame";
             this.prevFrame.Size = new System.Drawing.Size(41, 35);
             this.prevFrame.TabIndex = 3;
@@ -560,7 +782,7 @@
             this.nextFrame.FlatAppearance.BorderSize = 0;
             this.nextFrame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nextFrame.ForeColor = System.Drawing.Color.Lime;
-            this.nextFrame.Location = new System.Drawing.Point(56, 374);
+            this.nextFrame.Location = new System.Drawing.Point(36, 0);
             this.nextFrame.Name = "nextFrame";
             this.nextFrame.Size = new System.Drawing.Size(41, 35);
             this.nextFrame.TabIndex = 2;
@@ -588,200 +810,25 @@
             this.savePattern.DefaultExt = "txt";
             this.savePattern.Filter = "\"txt files|*.txt\"";
             // 
-            // tabControl1
+            // fbfPages
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(215, 429);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.Padding = new System.Drawing.Point(6, 1);
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(505, 114);
-            this.tabControl1.TabIndex = 0;
+            this.fbfPages.BackColor = System.Drawing.Color.DarkGray;
+            this.fbfPages.Controls.Add(this.duplicatePrev);
+            this.fbfPages.Controls.Add(this.prevFrame);
+            this.fbfPages.Controls.Add(this.duplicateNext);
+            this.fbfPages.Controls.Add(this.nextFrame);
+            this.fbfPages.Enabled = false;
+            this.fbfPages.Location = new System.Drawing.Point(15, 374);
+            this.fbfPages.Name = "fbfPages";
+            this.fbfPages.Size = new System.Drawing.Size(434, 35);
+            this.fbfPages.TabIndex = 6;
             // 
-            // tabPage1
+            // saveBar
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.DimGray;
-            this.tabPage1.Controls.Add(this.fbfConfig);
-            this.tabPage1.Controls.Add(this.scrollConfig);
-            this.tabPage1.Controls.Add(this.frameConfig);
-            this.tabPage1.Location = new System.Drawing.Point(4, 20);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(497, 90);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Pattern Settings";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.DimGray;
-            this.tabPage2.Controls.Add(this.animateSpd);
-            this.tabPage2.Controls.Add(this.label13);
-            this.tabPage2.Controls.Add(this.invertSignal);
-            this.tabPage2.Controls.Add(this.brightnessLED);
-            this.tabPage2.Controls.Add(this.label12);
-            this.tabPage2.Controls.Add(this.dma);
-            this.tabPage2.Controls.Add(this.freq);
-            this.tabPage2.Controls.Add(this.gpioPin);
-            this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Location = new System.Drawing.Point(4, 20);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(497, 90);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "LED Settings";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label9.Location = new System.Drawing.Point(11, 8);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(54, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "GPIO Pin:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label10.Location = new System.Drawing.Point(11, 34);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(86, 13);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Frequency (khz):";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label11.Location = new System.Drawing.Point(11, 60);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(34, 13);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "DMA:";
-            // 
-            // gpioPin
-            // 
-            this.gpioPin.Location = new System.Drawing.Point(115, 6);
-            this.gpioPin.Name = "gpioPin";
-            this.gpioPin.Size = new System.Drawing.Size(45, 20);
-            this.gpioPin.TabIndex = 5;
-            this.gpioPin.Value = new decimal(new int[] {
-            18,
-            0,
-            0,
-            0});
-            this.gpioPin.ValueChanged += new System.EventHandler(this.gpioPin_ValueChanged);
-            // 
-            // freq
-            // 
-            this.freq.Location = new System.Drawing.Point(115, 32);
-            this.freq.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.freq.Name = "freq";
-            this.freq.Size = new System.Drawing.Size(45, 20);
-            this.freq.TabIndex = 6;
-            this.freq.Value = new decimal(new int[] {
-            800,
-            0,
-            0,
-            0});
-            this.freq.ValueChanged += new System.EventHandler(this.freq_ValueChanged);
-            // 
-            // dma
-            // 
-            this.dma.Location = new System.Drawing.Point(115, 58);
-            this.dma.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.dma.Name = "dma";
-            this.dma.Size = new System.Drawing.Size(45, 20);
-            this.dma.TabIndex = 7;
-            this.dma.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.dma.ValueChanged += new System.EventHandler(this.dma_ValueChanged);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label12.Location = new System.Drawing.Point(195, 8);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(62, 13);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "Brightness: ";
-            // 
-            // brightnessLED
-            // 
-            this.brightnessLED.Location = new System.Drawing.Point(305, 6);
-            this.brightnessLED.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.brightnessLED.Name = "brightnessLED";
-            this.brightnessLED.Size = new System.Drawing.Size(45, 20);
-            this.brightnessLED.TabIndex = 9;
-            this.brightnessLED.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.brightnessLED.ValueChanged += new System.EventHandler(this.brightnessLED_ValueChanged);
-            // 
-            // invertSignal
-            // 
-            this.invertSignal.AutoSize = true;
-            this.invertSignal.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.invertSignal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.invertSignal.Location = new System.Drawing.Point(194, 60);
-            this.invertSignal.Name = "invertSignal";
-            this.invertSignal.Size = new System.Drawing.Size(88, 17);
-            this.invertSignal.TabIndex = 11;
-            this.invertSignal.Text = "Invert Signal:";
-            this.invertSignal.UseVisualStyleBackColor = true;
-            this.invertSignal.CheckedChanged += new System.EventHandler(this.invertSignal_CheckedChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label13.Location = new System.Drawing.Point(195, 34);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(90, 13);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "Animation Speed:";
-            // 
-            // animateSpd
-            // 
-            this.animateSpd.DecimalPlaces = 1;
-            this.animateSpd.Location = new System.Drawing.Point(305, 34);
-            this.animateSpd.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.animateSpd.Name = "animateSpd";
-            this.animateSpd.Size = new System.Drawing.Size(45, 20);
-            this.animateSpd.TabIndex = 13;
-            this.animateSpd.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.animateSpd.ValueChanged += new System.EventHandler(this.animateSpd_ValueChanged);
+            this.saveBar.Location = new System.Drawing.Point(725, 526);
+            this.saveBar.Name = "saveBar";
+            this.saveBar.Size = new System.Drawing.Size(55, 16);
+            this.saveBar.TabIndex = 6;
             // 
             // LEDMD
             // 
@@ -797,17 +844,26 @@
             this.Text = "LEDesigner";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.fbfConfig.ResumeLayout(false);
             this.fbfConfig.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numOfFrames)).EndInit();
-            this.frameConfig.ResumeLayout(false);
-            this.frameConfig.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.postVal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.preVal)).EndInit();
             this.scrollConfig.ResumeLayout(false);
             this.scrollConfig.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.realCol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.realRow)).EndInit();
+            this.frameConfig.ResumeLayout(false);
+            this.frameConfig.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.postVal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.preVal)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.animateSpd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brightnessLED)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.freq)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gpioPin)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -815,15 +871,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.colVal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rowVal)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gpioPin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.freq)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dma)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brightnessLED)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.animateSpd)).EndInit();
+            this.fbfPages.ResumeLayout(false);
+            this.fbfPages.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -886,6 +935,10 @@
         private System.Windows.Forms.CheckBox invertSignal;
         private System.Windows.Forms.NumericUpDown brightnessLED;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox duplicatePrev;
+        private System.Windows.Forms.CheckBox duplicateNext;
+        private System.Windows.Forms.Panel fbfPages;
+        private System.Windows.Forms.ProgressBar saveBar;
     }
 }
 

@@ -20,6 +20,8 @@ namespace LEDMatrixController {
         
         bool firstMatrix = true;
         bool owMatrix = false;
+        bool dupNext = false;
+        bool dupPrev = false;
         
         int rows;
         int cols;
@@ -30,7 +32,7 @@ namespace LEDMatrixController {
         int frameCount = 0;
         int currentFrame = 0;
         int gpio = 18;
-        int freqhz = 800000;
+        int freqhz = 800;
         int dmaChannel = 10;
         int brightLED = 10;
         int invSignal = 0;
@@ -83,8 +85,7 @@ namespace LEDMatrixController {
             scrollConfig.Enabled = false;
             frameConfig.Enabled = false;
             fbfConfig.Enabled = false;
-            nextFrame.Enabled = false;
-            prevFrame.Enabled = false;
+            fbfPages.Enabled = false;
 
             frameCount = 0;
             numOfFrames.Value = 0;
@@ -103,8 +104,7 @@ namespace LEDMatrixController {
             scrollConfig.Enabled = true;
             frameConfig.Enabled = true;
             fbfConfig.Enabled = false;
-            nextFrame.Enabled = false;
-            prevFrame.Enabled = false;
+            fbfPages.Enabled = false;
 
             frameCount = 0;
             numOfFrames.Value = 0;
@@ -125,6 +125,7 @@ namespace LEDMatrixController {
             scrollConfig.Enabled = false;
             frameConfig.Enabled = true;
             fbfConfig.Enabled = true;
+            fbfPages.Enabled = true;
             //nextFrame.Enabled = true;
             //prevFrame.Enabled = true;
         }
@@ -292,18 +293,35 @@ namespace LEDMatrixController {
                 String filePath = "";
                 String fileName = "";
                 bool success = false;
+                saveDesign.Enabled = false;
 
                 if (savePattern.ShowDialog() == DialogResult.OK) {
+                    saveBar.Value = 0;
                     if ((saveFile = savePattern.OpenFile() as FileStream) != null) {
 
                         saveWriter = new StreamWriter(saveFile);
-                        
-                        for (int y = 0; y < rows; y++) {
-                            for (int x = 0; x < cols; x++) {
-                                String color = ColorTranslator.ToHtml(Color.FromArgb(matrixColors[y, x].ToArgb()));
-                                saveWriter.WriteLine(color);
+ 
+                        if (mode != 2) {
+                            for (int y = 0; y < rows; y++) {
+                                for (int x = 0; x < cols; x++) {
+                                    String color = ColorTranslator.ToHtml(Color.FromArgb(matrixColors[y, x].ToArgb()));
+                                    saveWriter.WriteLine(color);
+                                    saveBar.Value += (50 / (rows * cols));
+                                }
+                                saveWriter.WriteLine("-");
                             }
-                            saveWriter.WriteLine("-");
+                        } else {
+                            foreach(Color[,] frame in colorMatrices) {
+                                for (int y = 0; y < rows; y++) {
+                                    for (int x = 0; x < cols; x++) {
+                                        String color = ColorTranslator.ToHtml(Color.FromArgb(frame[y, x].ToArgb()));
+                                        saveWriter.WriteLine(color);
+                                    }
+                                    saveWriter.WriteLine("-");
+                                }
+                                saveBar.Value += (50 / frameCount);
+                                saveWriter.WriteLine("=");
+                            }
                         }
 
                         filePath = Path.GetDirectoryName(saveFile.Name) + @"\config.cfg";
@@ -312,7 +330,11 @@ namespace LEDMatrixController {
 
                         saveWriter.Close();
                         saveFile.Close();
+
+                        saveBar.Value = 50;
                     }
+                } else if (savePattern.ShowDialog() != DialogResult.OK) {
+                    saveDesign.Enabled = true;
                 }
 
                 if (success) {
@@ -351,6 +373,11 @@ namespace LEDMatrixController {
                     saveWriter.WriteLine("inv = " + invSignal);//6
                     saveWriter.WriteLine("speed = " + spd);//8
 
+                    saveWriter.Close();
+                    saveFile.Close();
+
+                    saveBar.Value = 100;
+                    saveDesign.Enabled = true;
 
                 }
             }
@@ -385,7 +412,7 @@ namespace LEDMatrixController {
         }
 
         private void freq_ValueChanged(object sender, EventArgs e) {
-            freqhz = (int)freq.Value * 1000;
+            freqhz = (int)freq.Value;
         }
 
         private void dma_ValueChanged(object sender, EventArgs e) {
@@ -440,9 +467,14 @@ namespace LEDMatrixController {
 
         private void nextFrame_Click(object sender, EventArgs e) {
             currentFrame++;
+            duplicatePrev.Checked = false;
 
             if (currentFrame != 0) {
                 prevFrame.Enabled = true;
+            }
+
+            if (dupNext) {
+                colorMatrices[currentFrame] = matrixColors;
             }
 
             matrixColors = colorMatrices[currentFrame];
@@ -456,9 +488,14 @@ namespace LEDMatrixController {
 
         private void prevFrame_Click(object sender, EventArgs e) {
             currentFrame--;
+            duplicateNext.Checked = false;
 
             if (currentFrame != frameCount) {
                 nextFrame.Enabled = true;
+            }
+
+            if (dupPrev) {
+                colorMatrices[currentFrame] = matrixColors;
             }
 
             matrixColors = colorMatrices[currentFrame];
@@ -469,6 +506,15 @@ namespace LEDMatrixController {
                 prevFrame.Enabled = false;
             }
         }
+
+        private void duplicateNext_CheckedChanged(object sender, EventArgs e) {
+            dupNext = !dupNext;
+        }
+
+        private void duplicatePrev_CheckedChanged(object sender, EventArgs e) {
+            dupPrev = !dupPrev;
+        }
+
         //===============================================================================
     }
 }
