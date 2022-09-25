@@ -118,6 +118,20 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EQAACxEBf2RfkQAAActJREFUOE+dkksoRFEYx79z78xt5hqPeTAbiUjCkCgLyciULMVWSpay8CjJo5Qo
+        zIqaRgo7j7GRR2MjG7GRshBSHrFTltS4/t/tzG1GWXDqN+d83/l+39xzz6VQKCj+S5rs9XrsiqLUgCoi
+        WgHnQohJTdOyU+uSWDJGK4rvWQBf4AZNKpAPY32HdW2qyJgyF6HgAXM95l0QBc+qqubzPkYz4kfs15lS
+        csjNMBhAyGKkuLhIlfFOIFCuyJomxPeaZndzbDaRG8ugH4yyyDm/P8+G4gPk5qqrK5MNZsCsJWdmuhwo
+        OgJnTqcjI7nBgs1m8yN/CDZ5jWMUYH1tyULQEhJR7or5jjuDCazPMM/5fF475hHEL4Bf5r4lY8RpeHVN
+        OfiowAspQ2EfGAYNnsUTuzj8bKF4Ikrt/U8scyNcXZb8Z9FHoS6D4l8gcQtiYB3EkXsz8z3TBpE45+tC
+        gwScQVN2uXBmIS5pbEM2+IEU+S1DGqfGDsR0Ycr8o6pKCWmOV5rY/lWUZ9yjhWODsnMTuu7UrS8Mj1RK
+        Qrmitl6DIhcGdU+liVLeos5Bgxz6u9udo1kyo6MdHm0IRacglioyuKpC7M+DZo7T5L8RFN/VTsDRu1Tz
+        HgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="saveDesign.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAC8AAAAvCAYAAABzJ5OsAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -201,6 +215,9 @@
   </metadata>
   <metadata name="savePattern.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>137, 17</value>
+  </metadata>
+  <metadata name="loadPattern.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>252, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>45</value>

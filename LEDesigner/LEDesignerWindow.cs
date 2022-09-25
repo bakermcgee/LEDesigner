@@ -5,7 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -22,6 +24,7 @@ namespace LEDMatrixController {
         bool owMatrix = false;
         bool dupNext = false;
         bool dupPrev = false;
+        bool fill = false;
         
         int rows;
         int cols;
@@ -36,10 +39,13 @@ namespace LEDMatrixController {
         int dmaChannel = 10;
         int brightLED = 10;
         int invSignal = 0;
+        int loadCnt = 0;
         
         double preFrameCount = 0;
         double postFrameCount = 0;
         double spd = 1.0;
+
+        String gapColor = "#000000";
 
         //===============================================================================
         public LEDMD() {
@@ -132,8 +138,163 @@ namespace LEDMatrixController {
         //===============================================================================
         private void button5_Click(object sender, EventArgs e) {
 
-        }
+            String filePath = "";
+            String fileName = "";
+            FileStream saveFile;
+            StreamReader saveReader;
+            bool success = false;
 
+            if (loadPattern.ShowDialog() == DialogResult.OK) {
+                if ((saveFile = loadPattern.OpenFile() as FileStream) != null) {
+                    filePath = Path.GetDirectoryName(saveFile.Name);
+                    fileName = Path.GetFileName(saveFile.Name);
+
+                    saveFile.Close();
+
+                    saveReader = new StreamReader(filePath + @"\config.cfg");
+                    string settings;
+                    while ((settings = saveReader.ReadLine()) != null) {
+                        if (settings[0] != '!') {
+                            if (settings.Contains("mode = ")) {
+                                mode = Int32.Parse(settings.Substring(7));
+                            
+                            } else if (settings.Contains("rows = ")) {
+                                realRows = Int32.Parse(settings.Substring(7));
+                                realRow.Value = realRows;
+                            
+                            } else if (settings.Contains("columns = ")) {
+                                realCols = Int32.Parse(settings.Substring(10));
+                                realCol.Value = realCols;
+                            
+                            } else if (settings.Contains("scrollMode = ")) {
+                                scrollMode = Int32.Parse(settings.Substring(13));
+                            
+                            } else if (settings.Contains("preFrame = ")) {
+                                preFrameCount = Double.Parse(settings.Substring(11));
+                                preVal.Value = (decimal)preFrameCount;    
+                            
+                            } else if (settings.Contains("postFrame = ")) {
+                                postFrameCount = Double.Parse(settings.Substring(12));
+                                postVal.Value = (decimal)postFrameCount;
+                            
+                            } else if (settings.Contains("patternFile = ")) {
+                                
+                            } else if (settings.Contains("frames = ")) {
+                                frameCount = Int32.Parse(settings.Substring(9));
+                                numOfFrames.Value = (int)frameCount;
+                            
+                            } else if (settings.Contains("gpio = ")) {
+                                gpioPin.Value = Int32.Parse(settings.Substring(7));
+                                gpio = (int)gpioPin.Value;
+
+                            } else if (settings.Contains("freqhz = ")) {
+                                freq.Value = Int32.Parse(settings.Substring(9));
+
+                            } else if (settings.Contains("dma = ")) {
+                                dma.Value = Int32.Parse(settings.Substring(6));
+                            
+                            } else if (settings.Contains("brightness = ")) {
+                                brightnessLED.Value = Int32.Parse(settings.Substring(13));
+                            
+                            } else if (settings.Contains("inv = ")) {
+                                if (Int32.Parse(settings.Substring(6)) == 1) {
+                                    invertSignal.Checked = true;
+                                }
+                            
+                            } else if (settings.Contains("speed = ")) {
+                                spd = Double.Parse(settings.Substring(8));
+                                animateSpd.Value = (decimal)spd;
+                            
+                            } else if (settings.Contains("gapColor = ")) {
+                                gapColor = settings.Substring(11);
+                                gapVal.Text = gapColor;
+
+                            }
+                        }
+                    }
+
+                    saveReader.Close();
+
+                    if(mode == 0) {
+                        button1.PerformClick();
+                    }else if(mode == 1) {
+                        button2.PerformClick();
+                    }else if(mode == 2) {
+                        button3.PerformClick();
+                        updateFrameCount.PerformClick();
+                    }
+
+                    saveReader = new StreamReader(filePath + @"\" + fileName);
+
+                    List<String> hexList = new List<String>();
+                    string hex;
+                    bool first = true;
+                    rows = 0;
+                    cols = 0;
+                    while((hex = saveReader.ReadLine()) != null) {
+                        if (hex[0] == '#') {
+                            hexList.Add(hex);
+                        } else if (hex[0] == '-') {
+                            if (first) {
+                                cols = hexList.Count;
+                                colVal.Value = cols;
+                                first = false;
+                            }
+                            rows += 1;
+                        }
+                    }
+                    Console.WriteLine(hexList.Count);
+                    saveReader.Close();
+
+                    if(frameCount > 0) {
+                        rows = rows / frameCount;
+                        rowVal.Value = rows;
+                        colorMatrices = new List<Color[,]>();
+                        int i = 0;
+
+                        for (int frame = 0; frame < frameCount; frame++) {
+                            matrixColors = new Color[rows, cols];
+
+                            for (int y = 0; y < rows; y++) {
+                                for (int x = 0; x < cols; x++) {
+                                    matrixColors[y, x] = ColorTranslator.FromHtml(hexList[i]);
+                                    i++;
+                                }
+                            }
+
+                            colorMatrices.Add(matrixColors);
+                        }
+
+                        currentFrame = 0;
+                        firstMatrix = false;
+                        owMatrix = false;
+                        updateMatrixBox();
+
+                    } else {
+                        rowVal.Value = rows;
+                        matrixColors = new Color[rows, cols];
+                        int i = 0;
+
+                        for(int y = 0; y < rows; y++) {
+                            for(int x = 0; x < cols; x++) {
+                                Console.WriteLine(rows);
+                                Console.WriteLine(cols);
+                                Console.WriteLine(i);
+                                Console.WriteLine(hexList.Count);
+
+                                matrixColors[y, x] = ColorTranslator.FromHtml(hexList[i]);
+                                i++;
+                            }
+                        }
+
+                        firstMatrix = false;
+                        owMatrix = false;
+                        updateMatrixBox();
+                    }
+
+                }
+            }
+        }
         private void button4_Click(object sender, EventArgs e) {
             System.Windows.Forms.Application.Exit();
         }
@@ -207,24 +368,84 @@ namespace LEDMatrixController {
 
         }
         //===============================================================================
+        //toggles a "pixel" when clicked
         public void toggleButton(object sender, EventArgs e) {
             
             Button btn = (Button)sender;
             int[] xy = (int[])btn.Tag;
+            Color tmp = btn.BackColor;
+            bool canFill = false;
 
             if (btn.BackColor != chosenColor) {
                 btn.BackColor = chosenColor;
+                canFill = true;
             } else {
                 btn.BackColor = Color.Black;
             }
 
             matrixColors[xy[0], xy[1]] = btn.BackColor;
 
+            if (canFill && fill) { //fills pixels when fill is toggled true
+                int y = xy[0];
+                int x = xy[1];
+
+                while (y < rows - 1 && matrixColors[y + 1, x] == tmp) {
+                    matrixColors[y + 1, x] = chosenColor;
+                    y++;
+                }
+                y = xy[0];
+                
+                while (y > 0 && matrixColors[y - 1, x] == tmp) {
+                    matrixColors[y - 1, x] = chosenColor;
+                    y--;
+                }
+                y = xy[0];
+
+                while (x < cols - 1 && matrixColors[y, x + 1] == tmp) {
+                    matrixColors[y, x + 1] = chosenColor;
+                    while (y < rows - 1 && matrixColors[y + 1, x + 1] == tmp) {
+                        matrixColors[y + 1, x + 1] = chosenColor;
+                        y++;
+                    }
+                    y = xy[0];
+                    
+                    while (y > 0 && matrixColors[y - 1, x + 1] == tmp) {
+                        matrixColors[y - 1, x + 1] = chosenColor;
+                        y--;
+                    }
+                    y = xy[0];
+                    x++;
+                }
+
+                y = xy[0];
+                x = xy[1];
+
+                while (x > 0 && matrixColors[y, x - 1] == tmp) {
+                    matrixColors[y, x - 1] = chosenColor;
+                    while (y < rows - 1 && matrixColors[y + 1, x - 1] == tmp) {
+                        matrixColors[y + 1, x - 1] = chosenColor;
+                        y++;
+                    }
+                    y = xy[0];
+                    
+                    while (y > 0 && matrixColors[y - 1, x - 1] == tmp) {
+                        matrixColors[y - 1, x - 1] = chosenColor;
+                        y--;
+                    }
+                    y = xy[0];
+                    x--;
+                }
+
+                owMatrix = false;
+                updateMatrixBox();
+
+            }
+
             if(mode == 2) {
                 colorMatrices[currentFrame] = matrixColors;
             }
 
-            outputMatrix();
+            //outputMatrix();
 
         }
         //===============================================================================
@@ -268,6 +489,7 @@ namespace LEDMatrixController {
             colorMatrices = new List<Color[,]>();
         }
         //===============================================================================
+        //outputs matrix to console - meant for debug purposes
         void outputMatrix() {
             Console.WriteLine();
             for (int y = 0; y < rows; y++) {
@@ -372,6 +594,7 @@ namespace LEDMatrixController {
                     saveWriter.WriteLine("brightness = " + brightLED);//13
                     saveWriter.WriteLine("inv = " + invSignal);//6
                     saveWriter.WriteLine("speed = " + spd);//8
+                    saveWriter.WriteLine("gapColor = " + gapColor); //11
 
                     saveWriter.Close();
                     saveFile.Close();
@@ -513,6 +736,22 @@ namespace LEDMatrixController {
 
         private void duplicatePrev_CheckedChanged(object sender, EventArgs e) {
             dupPrev = !dupPrev;
+        }
+
+        private void button6_Click(object sender, EventArgs e) {
+            
+            fill = !fill;
+            
+            if (!fill) {
+                button6.BackColor = Color.Silver;
+            } else {
+                button6.BackColor = Color.FromArgb(255, 100, 100, 100);
+            }
+        
+        }
+
+        private void gapVal_TextChanged(object sender, EventArgs e) {
+            gapColor = gapVal.Text;
         }
 
         //===============================================================================

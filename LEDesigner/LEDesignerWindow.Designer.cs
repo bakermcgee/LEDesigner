@@ -25,6 +25,8 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LEDMD));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.saveBar = new System.Windows.Forms.ProgressBar();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.fbfConfig = new System.Windows.Forms.GroupBox();
@@ -46,6 +48,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.gapVal = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.animateSpd = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
             this.invertSignal = new System.Windows.Forms.CheckBox();
@@ -75,15 +79,15 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.fbfPages = new System.Windows.Forms.Panel();
             this.duplicatePrev = new System.Windows.Forms.CheckBox();
-            this.duplicateNext = new System.Windows.Forms.CheckBox();
             this.prevFrame = new System.Windows.Forms.Button();
+            this.duplicateNext = new System.Windows.Forms.CheckBox();
             this.nextFrame = new System.Windows.Forms.Button();
             this.designArea = new System.Windows.Forms.Panel();
             this.chooseColor = new System.Windows.Forms.ColorDialog();
             this.savePattern = new System.Windows.Forms.SaveFileDialog();
-            this.fbfPages = new System.Windows.Forms.Panel();
-            this.saveBar = new System.Windows.Forms.ProgressBar();
+            this.loadPattern = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -112,6 +116,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.saveBar);
             this.panel1.Controls.Add(this.tabControl1);
             this.panel1.Controls.Add(this.saveDesign);
@@ -124,11 +129,31 @@
             this.panel1.Size = new System.Drawing.Size(799, 559);
             this.panel1.TabIndex = 0;
             // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.Silver;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
+            this.button6.Location = new System.Drawing.Point(183, 530);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(25, 18);
+            this.button6.TabIndex = 7;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // saveBar
+            // 
+            this.saveBar.Location = new System.Drawing.Point(725, 530);
+            this.saveBar.Name = "saveBar";
+            this.saveBar.Size = new System.Drawing.Size(56, 18);
+            this.saveBar.TabIndex = 6;
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(215, 429);
+            this.tabControl1.Location = new System.Drawing.Point(215, 434);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(6, 1);
             this.tabControl1.SelectedIndex = 0;
@@ -345,6 +370,8 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage2.Controls.Add(this.gapVal);
+            this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.animateSpd);
             this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.invertSignal);
@@ -363,10 +390,29 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "LED Settings";
             // 
+            // gapVal
+            // 
+            this.gapVal.Location = new System.Drawing.Point(430, 6);
+            this.gapVal.Name = "gapVal";
+            this.gapVal.Size = new System.Drawing.Size(51, 20);
+            this.gapVal.TabIndex = 15;
+            this.gapVal.Text = "#000000";
+            this.gapVal.TextChanged += new System.EventHandler(this.gapVal_TextChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label14.Location = new System.Drawing.Point(364, 9);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(60, 13);
+            this.label14.TabIndex = 14;
+            this.label14.Text = "Gap Color: ";
+            // 
             // animateSpd
             // 
             this.animateSpd.DecimalPlaces = 1;
-            this.animateSpd.Location = new System.Drawing.Point(305, 34);
+            this.animateSpd.Location = new System.Drawing.Point(295, 35);
             this.animateSpd.Minimum = new decimal(new int[] {
             1,
             0,
@@ -386,7 +432,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label13.Location = new System.Drawing.Point(195, 34);
+            this.label13.Location = new System.Drawing.Point(185, 35);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(90, 13);
             this.label13.TabIndex = 12;
@@ -397,7 +443,7 @@
             this.invertSignal.AutoSize = true;
             this.invertSignal.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.invertSignal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.invertSignal.Location = new System.Drawing.Point(194, 60);
+            this.invertSignal.Location = new System.Drawing.Point(184, 61);
             this.invertSignal.Name = "invertSignal";
             this.invertSignal.Size = new System.Drawing.Size(88, 17);
             this.invertSignal.TabIndex = 11;
@@ -407,7 +453,7 @@
             // 
             // brightnessLED
             // 
-            this.brightnessLED.Location = new System.Drawing.Point(305, 6);
+            this.brightnessLED.Location = new System.Drawing.Point(295, 7);
             this.brightnessLED.Maximum = new decimal(new int[] {
             255,
             0,
@@ -427,7 +473,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label12.Location = new System.Drawing.Point(195, 8);
+            this.label12.Location = new System.Drawing.Point(185, 9);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(62, 13);
             this.label12.TabIndex = 8;
@@ -519,7 +565,7 @@
             this.saveDesign.FlatAppearance.BorderSize = 0;
             this.saveDesign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveDesign.Image = ((System.Drawing.Image)(resources.GetObject("saveDesign.Image")));
-            this.saveDesign.Location = new System.Drawing.Point(725, 429);
+            this.saveDesign.Location = new System.Drawing.Point(725, 434);
             this.saveDesign.Name = "saveDesign";
             this.saveDesign.Size = new System.Drawing.Size(56, 93);
             this.saveDesign.TabIndex = 4;
@@ -530,9 +576,9 @@
             // 
             this.colorPrev.BackColor = System.Drawing.Color.White;
             this.colorPrev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPrev.Location = new System.Drawing.Point(151, 525);
+            this.colorPrev.Location = new System.Drawing.Point(151, 530);
             this.colorPrev.Name = "colorPrev";
-            this.colorPrev.Size = new System.Drawing.Size(58, 18);
+            this.colorPrev.Size = new System.Drawing.Size(30, 18);
             this.colorPrev.TabIndex = 3;
             // 
             // colorButton
@@ -541,7 +587,7 @@
             this.colorButton.FlatAppearance.BorderSize = 0;
             this.colorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.colorButton.Image = ((System.Drawing.Image)(resources.GetObject("colorButton.Image")));
-            this.colorButton.Location = new System.Drawing.Point(152, 429);
+            this.colorButton.Location = new System.Drawing.Point(152, 434);
             this.colorButton.Name = "colorButton";
             this.colorButton.Size = new System.Drawing.Size(56, 93);
             this.colorButton.TabIndex = 0;
@@ -664,7 +710,7 @@
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button5.Location = new System.Drawing.Point(3, 481);
+            this.button5.Location = new System.Drawing.Point(3, 474);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(129, 34);
             this.button5.TabIndex = 3;
@@ -678,7 +724,7 @@
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button4.Location = new System.Drawing.Point(3, 521);
+            this.button4.Location = new System.Drawing.Point(3, 514);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(129, 34);
             this.button4.TabIndex = 1;
@@ -731,12 +777,26 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.LightGray;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.fbfPages);
             this.panel3.Controls.Add(this.designArea);
             this.panel3.Location = new System.Drawing.Point(152, 14);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(629, 409);
             this.panel3.TabIndex = 5;
+            // 
+            // fbfPages
+            // 
+            this.fbfPages.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.fbfPages.Controls.Add(this.duplicatePrev);
+            this.fbfPages.Controls.Add(this.prevFrame);
+            this.fbfPages.Controls.Add(this.duplicateNext);
+            this.fbfPages.Controls.Add(this.nextFrame);
+            this.fbfPages.Enabled = false;
+            this.fbfPages.Location = new System.Drawing.Point(15, 374);
+            this.fbfPages.Name = "fbfPages";
+            this.fbfPages.Size = new System.Drawing.Size(600, 35);
+            this.fbfPages.TabIndex = 6;
             // 
             // duplicatePrev
             // 
@@ -748,17 +808,6 @@
             this.duplicatePrev.Text = "Duplicate to Previous Frame";
             this.duplicatePrev.UseVisualStyleBackColor = true;
             this.duplicatePrev.CheckedChanged += new System.EventHandler(this.duplicatePrev_CheckedChanged);
-            // 
-            // duplicateNext
-            // 
-            this.duplicateNext.AutoSize = true;
-            this.duplicateNext.Location = new System.Drawing.Point(276, 10);
-            this.duplicateNext.Name = "duplicateNext";
-            this.duplicateNext.Size = new System.Drawing.Size(140, 17);
-            this.duplicateNext.TabIndex = 4;
-            this.duplicateNext.Text = "Duplicate to Next Frame";
-            this.duplicateNext.UseVisualStyleBackColor = true;
-            this.duplicateNext.CheckedChanged += new System.EventHandler(this.duplicateNext_CheckedChanged);
             // 
             // prevFrame
             // 
@@ -774,6 +823,17 @@
             this.prevFrame.Text = "<";
             this.prevFrame.UseVisualStyleBackColor = false;
             this.prevFrame.Click += new System.EventHandler(this.prevFrame_Click);
+            // 
+            // duplicateNext
+            // 
+            this.duplicateNext.AutoSize = true;
+            this.duplicateNext.Location = new System.Drawing.Point(276, 10);
+            this.duplicateNext.Name = "duplicateNext";
+            this.duplicateNext.Size = new System.Drawing.Size(140, 17);
+            this.duplicateNext.TabIndex = 4;
+            this.duplicateNext.Text = "Duplicate to Next Frame";
+            this.duplicateNext.UseVisualStyleBackColor = true;
+            this.duplicateNext.CheckedChanged += new System.EventHandler(this.duplicateNext_CheckedChanged);
             // 
             // nextFrame
             // 
@@ -808,27 +868,12 @@
             // savePattern
             // 
             this.savePattern.DefaultExt = "txt";
-            this.savePattern.Filter = "\"txt files|*.txt\"";
+            this.savePattern.Filter = "|*.txt";
             // 
-            // fbfPages
+            // loadPattern
             // 
-            this.fbfPages.BackColor = System.Drawing.Color.DarkGray;
-            this.fbfPages.Controls.Add(this.duplicatePrev);
-            this.fbfPages.Controls.Add(this.prevFrame);
-            this.fbfPages.Controls.Add(this.duplicateNext);
-            this.fbfPages.Controls.Add(this.nextFrame);
-            this.fbfPages.Enabled = false;
-            this.fbfPages.Location = new System.Drawing.Point(15, 374);
-            this.fbfPages.Name = "fbfPages";
-            this.fbfPages.Size = new System.Drawing.Size(434, 35);
-            this.fbfPages.TabIndex = 6;
-            // 
-            // saveBar
-            // 
-            this.saveBar.Location = new System.Drawing.Point(725, 526);
-            this.saveBar.Name = "saveBar";
-            this.saveBar.Size = new System.Drawing.Size(55, 16);
-            this.saveBar.TabIndex = 6;
+            this.loadPattern.DefaultExt = "txt";
+            this.loadPattern.Filter = "|*.txt";
             // 
             // LEDMD
             // 
@@ -939,6 +984,10 @@
         private System.Windows.Forms.CheckBox duplicateNext;
         private System.Windows.Forms.Panel fbfPages;
         private System.Windows.Forms.ProgressBar saveBar;
+        private System.Windows.Forms.TextBox gapVal;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.OpenFileDialog loadPattern;
     }
 }
 
