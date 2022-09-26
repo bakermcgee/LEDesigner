@@ -88,6 +88,7 @@
             this.chooseColor = new System.Windows.Forms.ColorDialog();
             this.savePattern = new System.Windows.Forms.SaveFileDialog();
             this.loadPattern = new System.Windows.Forms.OpenFileDialog();
+            this.errorMessage = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -232,7 +233,6 @@
             this.scrollConfig.TabIndex = 0;
             this.scrollConfig.TabStop = false;
             this.scrollConfig.Text = "Scrolling Settings";
-            this.scrollConfig.Enter += new System.EventHandler(this.scrollConfig_Enter);
             // 
             // label7
             // 
@@ -547,7 +547,6 @@
             this.label10.Size = new System.Drawing.Size(86, 13);
             this.label10.TabIndex = 1;
             this.label10.Text = "Frequency (khz):";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label9
             // 
@@ -625,7 +624,6 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Matrix Size:";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // ovrwrMatrix
             // 
@@ -702,7 +700,6 @@
             this.label2.Size = new System.Drawing.Size(70, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Design Type:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // button5
             // 
@@ -859,7 +856,6 @@
             this.designArea.Name = "designArea";
             this.designArea.Size = new System.Drawing.Size(600, 360);
             this.designArea.TabIndex = 1;
-            this.designArea.Paint += new System.Windows.Forms.PaintEventHandler(this.designArea_Paint);
             // 
             // chooseColor
             // 
@@ -875,6 +871,15 @@
             this.loadPattern.DefaultExt = "txt";
             this.loadPattern.Filter = "|*.txt";
             // 
+            // errorMessage
+            // 
+            this.errorMessage.AutoSize = true;
+            this.errorMessage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.errorMessage.Location = new System.Drawing.Point(11, 619);
+            this.errorMessage.Name = "errorMessage";
+            this.errorMessage.Size = new System.Drawing.Size(0, 13);
+            this.errorMessage.TabIndex = 1;
+            // 
             // LEDMD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -882,12 +887,12 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(792, 641);
+            this.Controls.Add(this.errorMessage);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "LEDMD";
             this.Text = "LEDesigner";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -919,6 +924,7 @@
             this.fbfPages.ResumeLayout(false);
             this.fbfPages.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -988,6 +994,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.OpenFileDialog loadPattern;
+        private System.Windows.Forms.Label errorMessage;
     }
 }
 

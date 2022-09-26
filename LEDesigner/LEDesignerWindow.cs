@@ -39,7 +39,6 @@ namespace LEDMatrixController {
         int dmaChannel = 10;
         int brightLED = 10;
         int invSignal = 0;
-        int loadCnt = 0;
         
         double preFrameCount = 0;
         double postFrameCount = 0;
@@ -50,22 +49,6 @@ namespace LEDMatrixController {
         //===============================================================================
         public LEDMD() {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e) {
-
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e) {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e) {
-
         }
         //===============================================================================
         private void updMatrix_Click(object sender, EventArgs e) {
@@ -132,17 +115,14 @@ namespace LEDMatrixController {
             frameConfig.Enabled = true;
             fbfConfig.Enabled = true;
             fbfPages.Enabled = true;
-            //nextFrame.Enabled = true;
-            //prevFrame.Enabled = true;
         }
         //===============================================================================
         private void button5_Click(object sender, EventArgs e) {
-
+            
             String filePath = "";
             String fileName = "";
             FileStream saveFile;
             StreamReader saveReader;
-            bool success = false;
 
             if (loadPattern.ShowDialog() == DialogResult.OK) {
                 if ((saveFile = loadPattern.OpenFile() as FileStream) != null) {
@@ -151,156 +131,156 @@ namespace LEDMatrixController {
 
                     saveFile.Close();
 
-                    saveReader = new StreamReader(filePath + @"\config.cfg");
-                    string settings;
-                    while ((settings = saveReader.ReadLine()) != null) {
-                        if (settings[0] != '!') {
-                            if (settings.Contains("mode = ")) {
-                                mode = Int32.Parse(settings.Substring(7));
-                            
-                            } else if (settings.Contains("rows = ")) {
-                                realRows = Int32.Parse(settings.Substring(7));
-                                realRow.Value = realRows;
-                            
-                            } else if (settings.Contains("columns = ")) {
-                                realCols = Int32.Parse(settings.Substring(10));
-                                realCol.Value = realCols;
-                            
-                            } else if (settings.Contains("scrollMode = ")) {
-                                scrollMode = Int32.Parse(settings.Substring(13));
-                            
-                            } else if (settings.Contains("preFrame = ")) {
-                                preFrameCount = Double.Parse(settings.Substring(11));
-                                preVal.Value = (decimal)preFrameCount;    
-                            
-                            } else if (settings.Contains("postFrame = ")) {
-                                postFrameCount = Double.Parse(settings.Substring(12));
-                                postVal.Value = (decimal)postFrameCount;
-                            
-                            } else if (settings.Contains("patternFile = ")) {
-                                
-                            } else if (settings.Contains("frames = ")) {
-                                frameCount = Int32.Parse(settings.Substring(9));
-                                numOfFrames.Value = (int)frameCount;
-                            
-                            } else if (settings.Contains("gpio = ")) {
-                                gpioPin.Value = Int32.Parse(settings.Substring(7));
-                                gpio = (int)gpioPin.Value;
+                    try {
+                        saveReader = new StreamReader(filePath + @"\config.cfg");
+                        string settings;
+                        while ((settings = saveReader.ReadLine()) != null) {
+                            if (settings[0] != '!') {
+                                if (settings.Contains("mode = ")) {
+                                    mode = Int32.Parse(settings.Substring(7));
 
-                            } else if (settings.Contains("freqhz = ")) {
-                                freq.Value = Int32.Parse(settings.Substring(9));
+                                } else if (settings.Contains("rows = ")) {
+                                    realRows = Int32.Parse(settings.Substring(7));
+                                    realRow.Value = realRows;
 
-                            } else if (settings.Contains("dma = ")) {
-                                dma.Value = Int32.Parse(settings.Substring(6));
-                            
-                            } else if (settings.Contains("brightness = ")) {
-                                brightnessLED.Value = Int32.Parse(settings.Substring(13));
-                            
-                            } else if (settings.Contains("inv = ")) {
-                                if (Int32.Parse(settings.Substring(6)) == 1) {
-                                    invertSignal.Checked = true;
+                                } else if (settings.Contains("columns = ")) {
+                                    realCols = Int32.Parse(settings.Substring(10));
+                                    realCol.Value = realCols;
+
+                                } else if (settings.Contains("scrollMode = ")) {
+                                    scrollMode = Int32.Parse(settings.Substring(13));
+
+                                } else if (settings.Contains("preFrame = ")) {
+                                    preFrameCount = Double.Parse(settings.Substring(11));
+                                    preVal.Value = (decimal)preFrameCount;
+
+                                } else if (settings.Contains("postFrame = ")) {
+                                    postFrameCount = Double.Parse(settings.Substring(12));
+                                    postVal.Value = (decimal)postFrameCount;
+
+                                } else if (settings.Contains("patternFile = ")) {
+
+                                } else if (settings.Contains("frames = ")) {
+                                    frameCount = Int32.Parse(settings.Substring(9));
+                                    numOfFrames.Value = (int)frameCount;
+
+                                } else if (settings.Contains("gpio = ")) {
+                                    gpioPin.Value = Int32.Parse(settings.Substring(7));
+                                    gpio = (int)gpioPin.Value;
+
+                                } else if (settings.Contains("freqhz = ")) {
+                                    freq.Value = Int32.Parse(settings.Substring(9));
+
+                                } else if (settings.Contains("dma = ")) {
+                                    dma.Value = Int32.Parse(settings.Substring(6));
+
+                                } else if (settings.Contains("brightness = ")) {
+                                    brightnessLED.Value = Int32.Parse(settings.Substring(13));
+
+                                } else if (settings.Contains("inv = ")) {
+                                    if (Int32.Parse(settings.Substring(6)) == 1) {
+                                        invertSignal.Checked = true;
+                                    }
+
+                                } else if (settings.Contains("speed = ")) {
+                                    spd = Double.Parse(settings.Substring(8));
+                                    animateSpd.Value = (decimal)spd;
+
+                                } else if (settings.Contains("gapColor = ")) {
+                                    gapColor = settings.Substring(11);
+                                    gapVal.Text = gapColor;
+
                                 }
-                            
-                            } else if (settings.Contains("speed = ")) {
-                                spd = Double.Parse(settings.Substring(8));
-                                animateSpd.Value = (decimal)spd;
-                            
-                            } else if (settings.Contains("gapColor = ")) {
-                                gapColor = settings.Substring(11);
-                                gapVal.Text = gapColor;
-
                             }
                         }
-                    }
 
-                    saveReader.Close();
+                        saveReader.Close();
 
-                    if(mode == 0) {
-                        button1.PerformClick();
-                    }else if(mode == 1) {
-                        button2.PerformClick();
-                    }else if(mode == 2) {
-                        button3.PerformClick();
-                        updateFrameCount.PerformClick();
-                    }
-
-                    saveReader = new StreamReader(filePath + @"\" + fileName);
-
-                    List<String> hexList = new List<String>();
-                    string hex;
-                    bool first = true;
-                    rows = 0;
-                    cols = 0;
-                    while((hex = saveReader.ReadLine()) != null) {
-                        if (hex[0] == '#') {
-                            hexList.Add(hex);
-                        } else if (hex[0] == '-') {
-                            if (first) {
-                                cols = hexList.Count;
-                                colVal.Value = cols;
-                                first = false;
-                            }
-                            rows += 1;
+                        if (mode == 0) {
+                            button1.PerformClick();
+                        } else if (mode == 1) {
+                            button2.PerformClick();
+                        } else if (mode == 2) {
+                            button3.PerformClick();
+                            updateFrameCount.PerformClick();
                         }
-                    }
-                    Console.WriteLine(hexList.Count);
-                    saveReader.Close();
 
-                    if(frameCount > 0) {
-                        rows = rows / frameCount;
-                        rowVal.Value = rows;
-                        colorMatrices = new List<Color[,]>();
-                        int i = 0;
+                        saveReader = new StreamReader(filePath + @"\" + fileName);
 
-                        for (int frame = 0; frame < frameCount; frame++) {
+                        List<String> hexList = new List<String>();
+                        string hex;
+                        bool first = true;
+                        rows = 0;
+                        cols = 0;
+                        while ((hex = saveReader.ReadLine()) != null) {
+                            if (hex[0] == '#') {
+                                hexList.Add(hex);
+                            } else if (hex[0] == '-') {
+                                if (first) {
+                                    cols = hexList.Count;
+                                    colVal.Value = cols;
+                                    first = false;
+                                }
+                                rows += 1;
+                            }
+                        }
+                        Console.WriteLine(hexList.Count);
+                        saveReader.Close();
+
+                        if (frameCount > 0) {
+                            rows = rows / frameCount;
+                            rowVal.Value = rows;
+                            colorMatrices = new List<Color[,]>();
+                            int i = 0;
+
+                            for (int frame = 0; frame < frameCount; frame++) {
+                                matrixColors = new Color[rows, cols];
+
+                                for (int y = 0; y < rows; y++) {
+                                    for (int x = 0; x < cols; x++) {
+                                        matrixColors[y, x] = ColorTranslator.FromHtml(hexList[i]);
+                                        i++;
+                                    }
+                                }
+
+                                colorMatrices.Add(matrixColors);
+                            }
+
+                            currentFrame = 0;
+                            firstMatrix = false;
+                            owMatrix = false;
+                            updateMatrixBox();
+
+                        } else {
+                            rowVal.Value = rows;
                             matrixColors = new Color[rows, cols];
+                            int i = 0;
 
                             for (int y = 0; y < rows; y++) {
                                 for (int x = 0; x < cols; x++) {
+                                    Console.WriteLine(rows);
+                                    Console.WriteLine(cols);
+                                    Console.WriteLine(i);
+                                    Console.WriteLine(hexList.Count);
+
                                     matrixColors[y, x] = ColorTranslator.FromHtml(hexList[i]);
                                     i++;
                                 }
                             }
 
-                            colorMatrices.Add(matrixColors);
+                            firstMatrix = false;
+                            owMatrix = false;
+                            updateMatrixBox();
                         }
-
-                        currentFrame = 0;
-                        firstMatrix = false;
-                        owMatrix = false;
-                        updateMatrixBox();
-
-                    } else {
-                        rowVal.Value = rows;
-                        matrixColors = new Color[rows, cols];
-                        int i = 0;
-
-                        for(int y = 0; y < rows; y++) {
-                            for(int x = 0; x < cols; x++) {
-                                Console.WriteLine(rows);
-                                Console.WriteLine(cols);
-                                Console.WriteLine(i);
-                                Console.WriteLine(hexList.Count);
-
-                                matrixColors[y, x] = ColorTranslator.FromHtml(hexList[i]);
-                                i++;
-                            }
-                        }
-
-                        firstMatrix = false;
-                        owMatrix = false;
-                        updateMatrixBox();
+                    } catch {
+                        errorMessage.Text = "An error occured: probably missing config file.";
                     }
-
                 }
             }
         }
+        //===============================================================================
         private void button4_Click(object sender, EventArgs e) {
             System.Windows.Forms.Application.Exit();
-        }
-
-        private void designArea_Paint(object sender, PaintEventArgs e) {
-
         }
         //===============================================================================
         void updateMatrixBox() { //updates the matrix when called 
@@ -365,7 +345,6 @@ namespace LEDMatrixController {
             }
             //-------------------------------------------------------------------
             firstMatrix = false;
-
         }
         //===============================================================================
         //toggles a "pixel" when clicked
@@ -446,11 +425,6 @@ namespace LEDMatrixController {
             }
 
             //outputMatrix();
-
-        }
-        //===============================================================================
-        private void groupBox1_Enter(object sender, EventArgs e) {
-
         }
         //===============================================================================
         private void colorButton_Click(object sender, EventArgs e) {
@@ -458,10 +432,6 @@ namespace LEDMatrixController {
                 chosenColor = chooseColor.Color;
                 colorPrev.BackColor = chosenColor;
             }
-        }
-        //===============================================================================
-        private void scrollConfig_Enter(object sender, EventArgs e) {
-
         }
         //===============================================================================
         private void radioButton1_CheckedChanged(object sender, EventArgs e) {
@@ -605,23 +575,19 @@ namespace LEDMatrixController {
                 }
             }
         }
-
+        //===============================================================================
         private void realRow_ValueChanged(object sender, EventArgs e) {
             if(mode == 1) {
                 realRows = (int)realRow.Value;
             }
         }
-
+        //===============================================================================
         private void realCol_ValueChanged(object sender, EventArgs e) {
             if (mode == 1) {
                 realCols = (int)realCol.Value;
             }            
         }
-
-        private void label10_Click(object sender, EventArgs e) {
-
-        }
-
+        //===============================================================================
         private void invertSignal_CheckedChanged(object sender, EventArgs e) {
             if(invSignal == 0) {
                 invSignal = 1;
@@ -629,27 +595,27 @@ namespace LEDMatrixController {
                 invSignal = 0;
             }
         }
-
+        //===============================================================================
         private void gpioPin_ValueChanged(object sender, EventArgs e) {
             gpio = (int)gpioPin.Value;
         }
-
+        //===============================================================================
         private void freq_ValueChanged(object sender, EventArgs e) {
             freqhz = (int)freq.Value;
         }
-
+        //===============================================================================
         private void dma_ValueChanged(object sender, EventArgs e) {
             dmaChannel = (int)dma.Value;
         }
-
+        //===============================================================================
         private void brightnessLED_ValueChanged(object sender, EventArgs e) {
             brightLED = (int)brightnessLED.Value;
         }
-
+        //===============================================================================
         private void animateSpd_ValueChanged(object sender, EventArgs e) {
             spd = (double)animateSpd.Value;
         }
-
+        //===============================================================================
         private void updateFrameCount_Click(object sender, EventArgs e) {
             int tmp = frameCount;
             frameCount = (int)numOfFrames.Value;
@@ -687,7 +653,7 @@ namespace LEDMatrixController {
 
             Console.WriteLine(colorMatrices.Count);
         }
-
+        //===============================================================================
         private void nextFrame_Click(object sender, EventArgs e) {
             currentFrame++;
             duplicatePrev.Checked = false;
@@ -708,7 +674,7 @@ namespace LEDMatrixController {
                 nextFrame.Enabled = false;
             }
         }
-
+        //===============================================================================
         private void prevFrame_Click(object sender, EventArgs e) {
             currentFrame--;
             duplicateNext.Checked = false;
@@ -729,15 +695,15 @@ namespace LEDMatrixController {
                 prevFrame.Enabled = false;
             }
         }
-
+        //===============================================================================
         private void duplicateNext_CheckedChanged(object sender, EventArgs e) {
             dupNext = !dupNext;
         }
-
+        //===============================================================================
         private void duplicatePrev_CheckedChanged(object sender, EventArgs e) {
             dupPrev = !dupPrev;
         }
-
+        //===============================================================================
         private void button6_Click(object sender, EventArgs e) {
             
             fill = !fill;
@@ -749,11 +715,10 @@ namespace LEDMatrixController {
             }
         
         }
-
+        //===============================================================================
         private void gapVal_TextChanged(object sender, EventArgs e) {
             gapColor = gapVal.Text;
         }
-
         //===============================================================================
     }
 }
