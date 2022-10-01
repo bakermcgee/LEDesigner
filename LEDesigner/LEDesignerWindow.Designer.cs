@@ -89,6 +89,8 @@
             this.savePattern = new System.Windows.Forms.SaveFileDialog();
             this.loadPattern = new System.Windows.Forms.OpenFileDialog();
             this.errorMessage = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -775,7 +777,9 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.LightGray;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.button8);
             this.panel3.Controls.Add(this.fbfPages);
+            this.panel3.Controls.Add(this.button7);
             this.panel3.Controls.Add(this.designArea);
             this.panel3.Location = new System.Drawing.Point(152, 14);
             this.panel3.Name = "panel3";
@@ -792,7 +796,7 @@
             this.fbfPages.Enabled = false;
             this.fbfPages.Location = new System.Drawing.Point(15, 374);
             this.fbfPages.Name = "fbfPages";
-            this.fbfPages.Size = new System.Drawing.Size(600, 35);
+            this.fbfPages.Size = new System.Drawing.Size(536, 35);
             this.fbfPages.TabIndex = 6;
             // 
             // duplicatePrev
@@ -879,6 +883,30 @@
             this.errorMessage.Name = "errorMessage";
             this.errorMessage.Size = new System.Drawing.Size(0, 13);
             this.errorMessage.TabIndex = 1;
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(557, 379);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(26, 25);
+            this.button7.TabIndex = 8;
+            this.button7.Text = "-";
+            this.button7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(589, 379);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(26, 25);
+            this.button8.TabIndex = 9;
+            this.button8.Text = "+";
+            this.button8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // LEDMD
             // 
@@ -996,6 +1024,8 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.OpenFileDialog loadPattern;
         private System.Windows.Forms.Label errorMessage;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
     }
 }
 

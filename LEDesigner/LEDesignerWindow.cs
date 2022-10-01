@@ -39,6 +39,7 @@ namespace LEDMatrixController {
         int dmaChannel = 10;
         int brightLED = 10;
         int invSignal = 0;
+        int zoom = 25;
         
         double preFrameCount = 0;
         double postFrameCount = 0;
@@ -315,8 +316,8 @@ namespace LEDMatrixController {
 
                     System.Windows.Forms.Button tmp = new System.Windows.Forms.Button();
 
-                    tmp.Width = 25;
-                    tmp.Height = 25;
+                    tmp.Width = zoom;
+                    tmp.Height = zoom;
 
                     if (firstMatrix || owMatrix) {
                         tmp.BackColor = Color.Black;
@@ -334,14 +335,14 @@ namespace LEDMatrixController {
                     tmp.Tag = new int[] {y, x};
                     tmp.Click += new System.EventHandler(toggleButton);
 
-                    yPos += 25;
+                    yPos += zoom;
 
                     matrixButtons[y, x] = tmp;
                     matrixColors[y, x] = tmp.BackColor;
                     designArea.Controls.Add(matrixButtons[y, x]);
 
                 }
-                xPos += 25;
+                xPos += zoom;
                 yPos = 0;
             }
             //-------------------------------------------------------------------
@@ -722,6 +723,42 @@ namespace LEDMatrixController {
         //===============================================================================
         private void gapVal_TextChanged(object sender, EventArgs e) {
             gapColor = gapVal.Text;
+        }
+        //===============================================================================
+        private void button7_Click(object sender, EventArgs e) {
+
+            if (!button8.Enabled) {
+                button8.Enabled = true;
+            }
+
+            if (zoom > 10) {
+                zoom -= 1;
+            }
+            owMatrix = false;
+            updateMatrixBox();
+
+            if (zoom == 10) {
+                button7.Enabled = false;
+            }
+
+        }
+        //===============================================================================
+        private void button8_Click(object sender, EventArgs e) {
+
+            if (!button7.Enabled) {
+                button7.Enabled = true;
+            }
+
+            if (zoom < 30) {
+                zoom += 1;
+            }
+            
+            owMatrix = false;
+            updateMatrixBox();
+
+            if (zoom == 30) { 
+                button8.Enabled = false;
+            }
         }
         //===============================================================================
     }
