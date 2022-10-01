@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{951B538C-82CE-4940-87C9-DB1CDB2A6CB9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>LEDMatrixController</RootNamespace>
-    <AssemblyName>LEDMatrixController</AssemblyName>
+    <RootNamespace>LEDesinger</RootNamespace>
+    <AssemblyName>LEDesginer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -68,6 +68,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

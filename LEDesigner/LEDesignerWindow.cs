@@ -55,9 +55,10 @@ namespace LEDMatrixController {
             owMatrix = false;
             updateMatrixBox();
 
-            frameCount = 0;
-            numOfFrames.Value = 0;
-            colorMatrices = new List<Color[,]>();
+            if (mode == 2) {
+                numOfFrames.Value = 1;
+                updateFrameCount.PerformClick();
+            }
         }
         //===============================================================================
         private void button1_Click(object sender, EventArgs e) {
@@ -421,6 +422,8 @@ namespace LEDMatrixController {
             }
 
             if(mode == 2) {
+                Console.WriteLine(currentFrame);
+                Console.WriteLine(colorMatrices.Count);
                 colorMatrices[currentFrame] = matrixColors;
             }
 
@@ -454,9 +457,10 @@ namespace LEDMatrixController {
             owMatrix = true;
             updateMatrixBox();
 
-            frameCount = 0;
-            numOfFrames.Value = 0;
-            colorMatrices = new List<Color[,]>();
+            if (mode == 2) {
+                numOfFrames.Value = 1;
+                updateFrameCount.PerformClick();
+            }
         }
         //===============================================================================
         //outputs matrix to console - meant for debug purposes
@@ -638,7 +642,7 @@ namespace LEDMatrixController {
                 }
             }
 
-            if(currentFrame != frameCount) {
+            if(currentFrame != frameCount && currentFrame < frameCount - 1) {
                 nextFrame.Enabled = true;
             } else {
                 nextFrame.Enabled = false;
