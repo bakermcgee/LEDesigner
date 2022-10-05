@@ -2,12 +2,12 @@
 A simple C# Winforms application for creating quick LED Matrix patterns. It is meant to be used in conjunction with a seperate program running on a microcontroller. 
 It was specifically written for use with a RaspberryPi and a custom microcontroller script that can be found here.
 
-![LEDesigner_1](https://user-images.githubusercontent.com/26748231/192395358-d049291e-b547-4e95-8640-5ebb9da94771.PNG)
+![LEDesigner_Kirby](https://user-images.githubusercontent.com/26748231/193983059-732fd4c6-6d62-4cbf-8450-d5f65494b650.PNG)
 
 ## Features
 - Simple user interface for designing matrix patterns.
 - Ability to create static, scrolling, or frame by frame patterns.
-- Saving of patterns to be read by some microcontroller.
+- Ability to save patterns for use with some microcontroller script.
 
 ## Usage
 1) Choose a design type and set the number of rows and columns.
