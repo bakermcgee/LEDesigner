@@ -79,18 +79,19 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             this.fbfPages = new System.Windows.Forms.Panel();
             this.duplicatePrev = new System.Windows.Forms.CheckBox();
             this.prevFrame = new System.Windows.Forms.Button();
             this.duplicateNext = new System.Windows.Forms.CheckBox();
             this.nextFrame = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.designArea = new System.Windows.Forms.Panel();
             this.chooseColor = new System.Windows.Forms.ColorDialog();
             this.savePattern = new System.Windows.Forms.SaveFileDialog();
             this.loadPattern = new System.Windows.Forms.OpenFileDialog();
             this.errorMessage = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.colorPick = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -119,6 +120,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.Controls.Add(this.colorPick);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.saveBar);
             this.panel1.Controls.Add(this.tabControl1);
@@ -134,13 +136,13 @@
             // 
             // button6
             // 
-            this.button6.BackColor = System.Drawing.Color.Silver;
+            this.button6.BackColor = System.Drawing.Color.DarkGray;
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.Location = new System.Drawing.Point(183, 530);
+            this.button6.Location = new System.Drawing.Point(182, 495);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(25, 18);
+            this.button6.Size = new System.Drawing.Size(27, 32);
             this.button6.TabIndex = 7;
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
@@ -579,7 +581,7 @@
             this.colorPrev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.colorPrev.Location = new System.Drawing.Point(151, 530);
             this.colorPrev.Name = "colorPrev";
-            this.colorPrev.Size = new System.Drawing.Size(30, 18);
+            this.colorPrev.Size = new System.Drawing.Size(58, 18);
             this.colorPrev.TabIndex = 3;
             // 
             // colorButton
@@ -588,9 +590,9 @@
             this.colorButton.FlatAppearance.BorderSize = 0;
             this.colorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.colorButton.Image = ((System.Drawing.Image)(resources.GetObject("colorButton.Image")));
-            this.colorButton.Location = new System.Drawing.Point(152, 434);
+            this.colorButton.Location = new System.Drawing.Point(151, 434);
             this.colorButton.Name = "colorButton";
-            this.colorButton.Size = new System.Drawing.Size(56, 93);
+            this.colorButton.Size = new System.Drawing.Size(58, 58);
             this.colorButton.TabIndex = 0;
             this.colorButton.UseVisualStyleBackColor = false;
             this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
@@ -786,6 +788,18 @@
             this.panel3.Size = new System.Drawing.Size(629, 409);
             this.panel3.TabIndex = 5;
             // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(589, 379);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(26, 25);
+            this.button8.TabIndex = 9;
+            this.button8.Text = "+";
+            this.button8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // fbfPages
             // 
             this.fbfPages.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
@@ -851,6 +865,18 @@
             this.nextFrame.UseVisualStyleBackColor = false;
             this.nextFrame.Click += new System.EventHandler(this.nextFrame_Click);
             // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(557, 379);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(26, 25);
+            this.button7.TabIndex = 8;
+            this.button7.Text = "-";
+            this.button7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // designArea
             // 
             this.designArea.AutoScroll = true;
@@ -884,29 +910,18 @@
             this.errorMessage.Size = new System.Drawing.Size(0, 13);
             this.errorMessage.TabIndex = 1;
             // 
-            // button7
+            // colorPick
             // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(557, 379);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(26, 25);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "-";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button8
-            // 
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(589, 379);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(26, 25);
-            this.button8.TabIndex = 9;
-            this.button8.Text = "+";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.colorPick.BackColor = System.Drawing.Color.DarkGray;
+            this.colorPick.FlatAppearance.BorderSize = 0;
+            this.colorPick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colorPick.Image = ((System.Drawing.Image)(resources.GetObject("colorPick.Image")));
+            this.colorPick.Location = new System.Drawing.Point(151, 495);
+            this.colorPick.Name = "colorPick";
+            this.colorPick.Size = new System.Drawing.Size(27, 32);
+            this.colorPick.TabIndex = 8;
+            this.colorPick.UseVisualStyleBackColor = false;
+            this.colorPick.Click += new System.EventHandler(this.colorPick_Click);
             // 
             // LEDMD
             // 
@@ -1026,6 +1041,7 @@
         private System.Windows.Forms.Label errorMessage;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button colorPick;
     }
 }
 

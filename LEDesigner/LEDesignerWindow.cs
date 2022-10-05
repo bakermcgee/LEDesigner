@@ -25,6 +25,7 @@ namespace LEDMatrixController {
         bool dupNext = false;
         bool dupPrev = false;
         bool fill = false;
+        bool pickCol = false;
         
         int rows;
         int cols;
@@ -357,77 +358,81 @@ namespace LEDMatrixController {
             Color tmp = btn.BackColor;
             bool canFill = false;
 
-            if (btn.BackColor != chosenColor) {
-                btn.BackColor = chosenColor;
-                canFill = true;
-            } else {
-                btn.BackColor = Color.Black;
-            }
-
-            matrixColors[xy[0], xy[1]] = btn.BackColor;
-
-            if (canFill && fill) { //fills pixels when fill is toggled true
-                int y = xy[0];
-                int x = xy[1];
-
-                while (y < rows - 1 && matrixColors[y + 1, x] == tmp) {
-                    matrixColors[y + 1, x] = chosenColor;
-                    y++;
+            if (!pickCol) { 
+                if (btn.BackColor != chosenColor) {
+                    btn.BackColor = chosenColor;
+                    canFill = true;
+                } else {
+                    btn.BackColor = Color.Black;
                 }
-                y = xy[0];
+
+                matrixColors[xy[0], xy[1]] = btn.BackColor;
+
+                if (canFill && fill) { //fills pixels when fill is toggled true
+                    int y = xy[0];
+                    int x = xy[1];
+
+                    while (y < rows - 1 && matrixColors[y + 1, x] == tmp) {
+                        matrixColors[y + 1, x] = chosenColor;
+                        y++;
+                    }
+                    y = xy[0];
                 
-                while (y > 0 && matrixColors[y - 1, x] == tmp) {
-                    matrixColors[y - 1, x] = chosenColor;
-                    y--;
-                }
-                y = xy[0];
-
-                while (x < cols - 1 && matrixColors[y, x + 1] == tmp) {
-                    matrixColors[y, x + 1] = chosenColor;
-                    while (y < rows - 1 && matrixColors[y + 1, x + 1] == tmp) {
-                        matrixColors[y + 1, x + 1] = chosenColor;
-                        y++;
-                    }
-                    y = xy[0];
-                    
-                    while (y > 0 && matrixColors[y - 1, x + 1] == tmp) {
-                        matrixColors[y - 1, x + 1] = chosenColor;
+                    while (y > 0 && matrixColors[y - 1, x] == tmp) {
+                        matrixColors[y - 1, x] = chosenColor;
                         y--;
                     }
                     y = xy[0];
-                    x++;
-                }
 
-                y = xy[0];
-                x = xy[1];
-
-                while (x > 0 && matrixColors[y, x - 1] == tmp) {
-                    matrixColors[y, x - 1] = chosenColor;
-                    while (y < rows - 1 && matrixColors[y + 1, x - 1] == tmp) {
-                        matrixColors[y + 1, x - 1] = chosenColor;
-                        y++;
-                    }
-                    y = xy[0];
+                    while (x < cols - 1 && matrixColors[y, x + 1] == tmp) {
+                        matrixColors[y, x + 1] = chosenColor;
+                        while (y < rows - 1 && matrixColors[y + 1, x + 1] == tmp) {
+                            matrixColors[y + 1, x + 1] = chosenColor;
+                            y++;
+                        }
+                        y = xy[0];
                     
-                    while (y > 0 && matrixColors[y - 1, x - 1] == tmp) {
-                        matrixColors[y - 1, x - 1] = chosenColor;
-                        y--;
+                        while (y > 0 && matrixColors[y - 1, x + 1] == tmp) {
+                            matrixColors[y - 1, x + 1] = chosenColor;
+                            y--;
+                        }
+                        y = xy[0];
+                        x++;
                     }
+
                     y = xy[0];
-                    x--;
+                    x = xy[1];
+
+                    while (x > 0 && matrixColors[y, x - 1] == tmp) {
+                        matrixColors[y, x - 1] = chosenColor;
+                        while (y < rows - 1 && matrixColors[y + 1, x - 1] == tmp) {
+                            matrixColors[y + 1, x - 1] = chosenColor;
+                            y++;
+                        }
+                        y = xy[0];
+                    
+                        while (y > 0 && matrixColors[y - 1, x - 1] == tmp) {
+                            matrixColors[y - 1, x - 1] = chosenColor;
+                            y--;
+                        }
+                        y = xy[0];
+                        x--;
+                    }
+
+                    owMatrix = false;
+                    updateMatrixBox();
+
                 }
 
-                owMatrix = false;
-                updateMatrixBox();
-
+                if(mode == 2) {
+                    Console.WriteLine(currentFrame);
+                    Console.WriteLine(colorMatrices.Count);
+                    colorMatrices[currentFrame] = matrixColors;
+                }
+            } else {
+                chosenColor = btn.BackColor;
+                colorPrev.BackColor = chosenColor;
             }
-
-            if(mode == 2) {
-                Console.WriteLine(currentFrame);
-                Console.WriteLine(colorMatrices.Count);
-                colorMatrices[currentFrame] = matrixColors;
-            }
-
             //outputMatrix();
         }
         //===============================================================================
@@ -714,8 +719,11 @@ namespace LEDMatrixController {
             fill = !fill;
             
             if (!fill) {
-                button6.BackColor = Color.Silver;
+                button6.BackColor = Color.DarkGray;
             } else {
+                if (pickCol) {
+                    colorPick.PerformClick();
+                }
                 button6.BackColor = Color.FromArgb(255, 100, 100, 100);
             }
         
@@ -758,6 +766,19 @@ namespace LEDMatrixController {
 
             if (zoom == 30) { 
                 button8.Enabled = false;
+            }
+        }
+        //===============================================================================
+        private void colorPick_Click(object sender, EventArgs e) {
+            pickCol = !pickCol;
+
+            if (!pickCol) {
+                colorPick.BackColor = Color.DarkGray;
+            } else {
+                if (fill) {
+                    button6.PerformClick();
+                }
+                colorPick.BackColor = Color.FromArgb(255, 100, 100, 100);
             }
         }
         //===============================================================================
