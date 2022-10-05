@@ -1,6 +1,6 @@
 # LEDesigner
 A simple C# Winforms application for creating quick LED Matrix patterns. It is meant to be used in conjunction with a seperate program running on a microcontroller. 
-It was specifically written for use with a RaspberryPi and a custom microcontroller script that can be found here.
+It was specifically written for use with a RaspberryPi and a [custom microcontroller script](https://github.com/bakermcgee/LEDesignController).
 
 ![LEDesigner_Kirby](https://user-images.githubusercontent.com/26748231/193983059-732fd4c6-6d62-4cbf-8450-d5f65494b650.PNG)
 
