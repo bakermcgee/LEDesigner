@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LEDMD));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.colorPick = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.saveBar = new System.Windows.Forms.ProgressBar();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -65,6 +66,7 @@
             this.colorPrev = new System.Windows.Forms.Panel();
             this.colorButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.imgFrame = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ovrwrMatrix = new System.Windows.Forms.Button();
             this.updMatrix = new System.Windows.Forms.Button();
@@ -91,7 +93,7 @@
             this.savePattern = new System.Windows.Forms.SaveFileDialog();
             this.loadPattern = new System.Windows.Forms.OpenFileDialog();
             this.errorMessage = new System.Windows.Forms.Label();
-            this.colorPick = new System.Windows.Forms.Button();
+            this.loadImage = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -133,6 +135,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(799, 559);
             this.panel1.TabIndex = 0;
+            // 
+            // colorPick
+            // 
+            this.colorPick.BackColor = System.Drawing.Color.DarkGray;
+            this.colorPick.FlatAppearance.BorderSize = 0;
+            this.colorPick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colorPick.Image = ((System.Drawing.Image)(resources.GetObject("colorPick.Image")));
+            this.colorPick.Location = new System.Drawing.Point(151, 495);
+            this.colorPick.Name = "colorPick";
+            this.colorPick.Size = new System.Drawing.Size(27, 32);
+            this.colorPick.TabIndex = 8;
+            this.colorPick.UseVisualStyleBackColor = false;
+            this.colorPick.Click += new System.EventHandler(this.colorPick_Click);
             // 
             // button6
             // 
@@ -600,6 +615,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DimGray;
+            this.panel2.Controls.Add(this.imgFrame);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.button5);
@@ -611,6 +627,21 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(135, 558);
             this.panel2.TabIndex = 0;
+            // 
+            // imgFrame
+            // 
+            this.imgFrame.BackColor = System.Drawing.Color.DarkGray;
+            this.imgFrame.Enabled = false;
+            this.imgFrame.FlatAppearance.BorderSize = 0;
+            this.imgFrame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.imgFrame.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.imgFrame.Location = new System.Drawing.Point(3, 434);
+            this.imgFrame.Name = "imgFrame";
+            this.imgFrame.Size = new System.Drawing.Size(129, 34);
+            this.imgFrame.TabIndex = 11;
+            this.imgFrame.Text = "Image2Frame";
+            this.imgFrame.UseVisualStyleBackColor = false;
+            this.imgFrame.Click += new System.EventHandler(this.imgFrame_Click);
             // 
             // groupBox1
             // 
@@ -910,18 +941,9 @@
             this.errorMessage.Size = new System.Drawing.Size(0, 13);
             this.errorMessage.TabIndex = 1;
             // 
-            // colorPick
+            // loadImage
             // 
-            this.colorPick.BackColor = System.Drawing.Color.DarkGray;
-            this.colorPick.FlatAppearance.BorderSize = 0;
-            this.colorPick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.colorPick.Image = ((System.Drawing.Image)(resources.GetObject("colorPick.Image")));
-            this.colorPick.Location = new System.Drawing.Point(151, 495);
-            this.colorPick.Name = "colorPick";
-            this.colorPick.Size = new System.Drawing.Size(27, 32);
-            this.colorPick.TabIndex = 8;
-            this.colorPick.UseVisualStyleBackColor = false;
-            this.colorPick.Click += new System.EventHandler(this.colorPick_Click);
+            this.loadImage.Filter = "|*.jpg||*.jpeg||*.png||*.gif";
             // 
             // LEDMD
             // 
@@ -1042,6 +1064,8 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button colorPick;
+        private System.Windows.Forms.Button imgFrame;
+        private System.Windows.Forms.OpenFileDialog loadImage;
     }
 }
 

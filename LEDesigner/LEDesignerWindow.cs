@@ -304,6 +304,11 @@ namespace LEDMatrixController {
                 realCols = (int)realCol.Value;
             }
 
+            if(rows > 5 && cols > 5)
+                imgFrame.Enabled = true;
+            else
+                imgFrame.Enabled = false;
+
             matrixButtons = new System.Windows.Forms.Button[rows,cols];
 
             Color[,] tmpColor = matrixColors;
@@ -779,6 +784,30 @@ namespace LEDMatrixController {
                     button6.PerformClick();
                 }
                 colorPick.BackColor = Color.FromArgb(255, 100, 100, 100);
+            }
+        }
+        //===============================================================================
+        private void imgFrame_Click(object sender, EventArgs e) {
+            if (loadImage.ShowDialog() == DialogResult.OK) { 
+                
+                string path = Path.GetFullPath(loadImage.FileName);
+                Image inputImage = Image.FromFile(path);
+
+                matrixColors = new Color[rows, cols];
+
+                Bitmap bmp = new Bitmap(inputImage, new Size(cols, rows));
+                for (int y = 0; y < rows; y++) {
+                    for (int x = 0; x < cols; x++) {
+                        matrixColors[y, x] = bmp.GetPixel(x, y);
+                    }
+                }
+
+                firstMatrix = false;
+                owMatrix = false;
+                updateMatrixBox();
+
+                bmp.Dispose();
+                inputImage.Dispose();
             }
         }
         //===============================================================================
