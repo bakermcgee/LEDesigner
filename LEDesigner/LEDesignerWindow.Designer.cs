@@ -94,6 +94,8 @@
             this.loadPattern = new System.Windows.Forms.OpenFileDialog();
             this.errorMessage = new System.Windows.Forms.Label();
             this.loadImage = new System.Windows.Forms.OpenFileDialog();
+            this.loadGif = new System.Windows.Forms.OpenFileDialog();
+            this.imgFrames = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -230,6 +232,11 @@
             // numOfFrames
             // 
             this.numOfFrames.Location = new System.Drawing.Point(59, 22);
+            this.numOfFrames.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
             this.numOfFrames.Name = "numOfFrames";
             this.numOfFrames.Size = new System.Drawing.Size(36, 20);
             this.numOfFrames.TabIndex = 1;
@@ -615,6 +622,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DimGray;
+            this.panel2.Controls.Add(this.imgFrames);
             this.panel2.Controls.Add(this.imgFrame);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.label2);
@@ -653,7 +661,7 @@
             this.groupBox1.Controls.Add(this.colVal);
             this.groupBox1.Controls.Add(this.rowVal);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox1.Location = new System.Drawing.Point(3, 250);
+            this.groupBox1.Location = new System.Drawing.Point(3, 213);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(129, 138);
             this.groupBox1.TabIndex = 10;
@@ -945,6 +953,25 @@
             // 
             this.loadImage.Filter = "|*.jpg||*.jpeg||*.png||*.gif";
             // 
+            // loadGif
+            // 
+            this.loadGif.Filter = "|*.gif||*.apng";
+            // 
+            // imgFrames
+            // 
+            this.imgFrames.BackColor = System.Drawing.Color.DarkGray;
+            this.imgFrames.Enabled = false;
+            this.imgFrames.FlatAppearance.BorderSize = 0;
+            this.imgFrames.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.imgFrames.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.imgFrames.Location = new System.Drawing.Point(3, 394);
+            this.imgFrames.Name = "imgFrames";
+            this.imgFrames.Size = new System.Drawing.Size(129, 34);
+            this.imgFrames.TabIndex = 12;
+            this.imgFrames.Text = "Image2FByF";
+            this.imgFrames.UseVisualStyleBackColor = false;
+            this.imgFrames.Click += new System.EventHandler(this.imgFrames_Click);
+            // 
             // LEDMD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1066,6 +1093,8 @@
         private System.Windows.Forms.Button colorPick;
         private System.Windows.Forms.Button imgFrame;
         private System.Windows.Forms.OpenFileDialog loadImage;
+        private System.Windows.Forms.OpenFileDialog loadGif;
+        private System.Windows.Forms.Button imgFrames;
     }
 }
 

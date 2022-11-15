@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -78,6 +79,7 @@ namespace LEDMatrixController {
             frameConfig.Enabled = false;
             fbfConfig.Enabled = false;
             fbfPages.Enabled = false;
+            imgFrames.Enabled = false;
 
             frameCount = 0;
             numOfFrames.Value = 0;
@@ -97,6 +99,7 @@ namespace LEDMatrixController {
             frameConfig.Enabled = true;
             fbfConfig.Enabled = false;
             fbfPages.Enabled = false;
+            imgFrames.Enabled= false;
 
             frameCount = 0;
             numOfFrames.Value = 0;
@@ -253,6 +256,7 @@ namespace LEDMatrixController {
                             firstMatrix = false;
                             owMatrix = false;
                             updateMatrixBox();
+                            firstFrame();
 
                         } else {
                             rowVal.Value = rows;
@@ -289,14 +293,14 @@ namespace LEDMatrixController {
         void updateMatrixBox() { //updates the matrix when called 
             //-------------------------------------------------------------------
             //removes the previous Controls in the designArea panel
-            foreach(Control btn in designArea.Controls.OfType<Button>().ToList()) {
+            foreach (Control btn in designArea.Controls.OfType<Button>().ToList()) {
                 designArea.Controls.Remove(btn);
             }
             //-------------------------------------------------------------------
             rows = (int)rowVal.Value;
             cols = (int)colVal.Value;
 
-            if(mode != 1) {
+            if (mode != 1) {
                 realRows = rows;
                 realCols = cols;
             } else {
@@ -304,10 +308,14 @@ namespace LEDMatrixController {
                 realCols = (int)realCol.Value;
             }
 
-            if(rows > 5 && cols > 5)
+            if (rows > 5 && cols > 5) {
                 imgFrame.Enabled = true;
-            else
+                if(mode == 2)
+                    imgFrames.Enabled = true;
+            } else { 
                 imgFrame.Enabled = false;
+                imgFrames.Enabled = false;
+            }
 
             matrixButtons = new System.Windows.Forms.Button[rows,cols];
 
@@ -802,6 +810,9 @@ namespace LEDMatrixController {
                     }
                 }
 
+                if (mode == 2)
+                    colorMatrices[currentFrame] = matrixColors;
+
                 firstMatrix = false;
                 owMatrix = false;
                 updateMatrixBox();
@@ -809,6 +820,52 @@ namespace LEDMatrixController {
                 bmp.Dispose();
                 inputImage.Dispose();
             }
+        }
+        //===============================================================================
+        private void imgFrames_Click(object sender, EventArgs e) {
+            if (loadGif.ShowDialog() == DialogResult.OK) {
+
+                string path = Path.GetFullPath(loadGif.FileName);
+                Image inputImage = Image.FromFile(path);
+                FrameDimension imgDim = new FrameDimension(inputImage.FrameDimensionsList[0]);
+
+                frameCount = inputImage.GetFrameCount(imgDim);
+                numOfFrames.Value = (int)frameCount;
+                updateFrameCount.PerformClick();
+
+                colorMatrices = new List<Color[,]>();
+
+                for (int i = 0; i < frameCount; i++) {
+                    
+                    matrixColors = new Color[rows, cols];
+                    
+                    inputImage.SelectActiveFrame(imgDim, i);
+                    Bitmap bmp = new Bitmap(inputImage, new Size(cols, rows));
+                    
+                    for (int y = 0; y < rows; y++) {
+                        for (int x = 0; x < cols; x++) {
+                            matrixColors[y, x] = bmp.GetPixel(x, y);
+                        }
+                    }
+
+                    bmp.Dispose();
+                    colorMatrices.Add(matrixColors);
+                }
+
+                currentFrame = 0;
+                firstMatrix = false;
+                owMatrix = false;
+                updateMatrixBox();
+                firstFrame();
+
+                
+                inputImage.Dispose();
+            }
+        }
+
+        void firstFrame() {
+            prevFrame.Enabled = false;
+            nextFrame.Enabled = true;
         }
         //===============================================================================
     }
