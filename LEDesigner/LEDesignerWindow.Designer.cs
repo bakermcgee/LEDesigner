@@ -66,6 +66,7 @@
             this.colorPrev = new System.Windows.Forms.Panel();
             this.colorButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.imgFrames = new System.Windows.Forms.Button();
             this.imgFrame = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ovrwrMatrix = new System.Windows.Forms.Button();
@@ -95,7 +96,15 @@
             this.errorMessage = new System.Windows.Forms.Label();
             this.loadImage = new System.Windows.Forms.OpenFileDialog();
             this.loadGif = new System.Windows.Forms.OpenFileDialog();
-            this.imgFrames = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.rVal = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.gVal = new System.Windows.Forms.NumericUpDown();
+            this.label17 = new System.Windows.Forms.Label();
+            this.bVal = new System.Windows.Forms.NumericUpDown();
+            this.button9 = new System.Windows.Forms.Button();
+            this.allFrames = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -119,6 +128,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.rowVal)).BeginInit();
             this.panel3.SuspendLayout();
             this.fbfPages.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rVal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gVal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bVal)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -175,6 +188,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(215, 434);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(6, 1);
@@ -636,6 +650,21 @@
             this.panel2.Size = new System.Drawing.Size(135, 558);
             this.panel2.TabIndex = 0;
             // 
+            // imgFrames
+            // 
+            this.imgFrames.BackColor = System.Drawing.Color.DarkGray;
+            this.imgFrames.Enabled = false;
+            this.imgFrames.FlatAppearance.BorderSize = 0;
+            this.imgFrames.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.imgFrames.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.imgFrames.Location = new System.Drawing.Point(3, 394);
+            this.imgFrames.Name = "imgFrames";
+            this.imgFrames.Size = new System.Drawing.Size(129, 34);
+            this.imgFrames.TabIndex = 12;
+            this.imgFrames.Text = "Image2FByF";
+            this.imgFrames.UseVisualStyleBackColor = false;
+            this.imgFrames.Click += new System.EventHandler(this.imgFrames_Click);
+            // 
             // imgFrame
             // 
             this.imgFrame.BackColor = System.Drawing.Color.DarkGray;
@@ -957,20 +986,111 @@
             // 
             this.loadGif.Filter = "|*.gif||*.apng";
             // 
-            // imgFrames
+            // tabPage3
             // 
-            this.imgFrames.BackColor = System.Drawing.Color.DarkGray;
-            this.imgFrames.Enabled = false;
-            this.imgFrames.FlatAppearance.BorderSize = 0;
-            this.imgFrames.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.imgFrames.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.imgFrames.Location = new System.Drawing.Point(3, 394);
-            this.imgFrames.Name = "imgFrames";
-            this.imgFrames.Size = new System.Drawing.Size(129, 34);
-            this.imgFrames.TabIndex = 12;
-            this.imgFrames.Text = "Image2FByF";
-            this.imgFrames.UseVisualStyleBackColor = false;
-            this.imgFrames.Click += new System.EventHandler(this.imgFrames_Click);
+            this.tabPage3.BackColor = System.Drawing.Color.DimGray;
+            this.tabPage3.Controls.Add(this.allFrames);
+            this.tabPage3.Controls.Add(this.button9);
+            this.tabPage3.Controls.Add(this.label17);
+            this.tabPage3.Controls.Add(this.bVal);
+            this.tabPage3.Controls.Add(this.label16);
+            this.tabPage3.Controls.Add(this.gVal);
+            this.tabPage3.Controls.Add(this.label15);
+            this.tabPage3.Controls.Add(this.rVal);
+            this.tabPage3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tabPage3.Location = new System.Drawing.Point(4, 20);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(497, 90);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Color Correction";
+            // 
+            // rVal
+            // 
+            this.rVal.Location = new System.Drawing.Point(48, 8);
+            this.rVal.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.rVal.Name = "rVal";
+            this.rVal.Size = new System.Drawing.Size(43, 20);
+            this.rVal.TabIndex = 0;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label15.Location = new System.Drawing.Point(24, 10);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(18, 13);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "R:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label16.Location = new System.Drawing.Point(24, 36);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(18, 13);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "G:";
+            // 
+            // gVal
+            // 
+            this.gVal.Location = new System.Drawing.Point(48, 34);
+            this.gVal.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.gVal.Name = "gVal";
+            this.gVal.Size = new System.Drawing.Size(43, 20);
+            this.gVal.TabIndex = 2;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label17.Location = new System.Drawing.Point(24, 62);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(17, 13);
+            this.label17.TabIndex = 5;
+            this.label17.Text = "B:";
+            // 
+            // bVal
+            // 
+            this.bVal.Location = new System.Drawing.Point(48, 60);
+            this.bVal.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.bVal.Name = "bVal";
+            this.bVal.Size = new System.Drawing.Size(43, 20);
+            this.bVal.TabIndex = 4;
+            // 
+            // button9
+            // 
+            this.button9.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button9.Location = new System.Drawing.Point(133, 47);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(60, 21);
+            this.button9.TabIndex = 12;
+            this.button9.Text = "Apply";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // allFrames
+            // 
+            this.allFrames.AutoSize = true;
+            this.allFrames.ForeColor = System.Drawing.SystemColors.Control;
+            this.allFrames.Location = new System.Drawing.Point(133, 19);
+            this.allFrames.Name = "allFrames";
+            this.allFrames.Size = new System.Drawing.Size(74, 17);
+            this.allFrames.TabIndex = 13;
+            this.allFrames.Text = "All Frames";
+            this.allFrames.UseVisualStyleBackColor = true;
             // 
             // LEDMD
             // 
@@ -1016,6 +1136,11 @@
             this.panel3.ResumeLayout(false);
             this.fbfPages.ResumeLayout(false);
             this.fbfPages.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rVal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gVal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bVal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1095,6 +1220,15 @@
         private System.Windows.Forms.OpenFileDialog loadImage;
         private System.Windows.Forms.OpenFileDialog loadGif;
         private System.Windows.Forms.Button imgFrames;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.NumericUpDown bVal;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.NumericUpDown gVal;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.NumericUpDown rVal;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.CheckBox allFrames;
     }
 }
 

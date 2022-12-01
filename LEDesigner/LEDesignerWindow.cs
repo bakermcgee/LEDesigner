@@ -795,7 +795,7 @@ namespace LEDMatrixController {
             }
         }
         //===============================================================================
-        private void imgFrame_Click(object sender, EventArgs e) {
+        private void imgFrame_Click(object sender, EventArgs e) { //converts an image to a single frame
             if (loadImage.ShowDialog() == DialogResult.OK) { 
                 
                 string path = Path.GetFullPath(loadImage.FileName);
@@ -822,7 +822,7 @@ namespace LEDMatrixController {
             }
         }
         //===============================================================================
-        private void imgFrames_Click(object sender, EventArgs e) {
+        private void imgFrames_Click(object sender, EventArgs e) { //converts an animated image into multiple frames
             if (loadGif.ShowDialog() == DialogResult.OK) {
 
                 string path = Path.GetFullPath(loadGif.FileName);
@@ -862,10 +862,74 @@ namespace LEDMatrixController {
                 inputImage.Dispose();
             }
         }
-
-        void firstFrame() {
+        //===============================================================================
+        void firstFrame() { //returns a fbf pattern to the first frame
             prevFrame.Enabled = false;
             nextFrame.Enabled = true;
+        }
+
+        private void button9_Click(object sender, EventArgs e) {
+            if (allFrames.Checked && mode == 2) {
+                var tmps = colorMatrices;
+                int r = (int)rVal.Value;
+                int g = (int)gVal.Value;
+                int b = (int)bVal.Value;
+
+                try {
+
+                    for (int frame = 0; frame < frameCount; frame++) {
+                        var tmp = tmps[frame];
+
+                        for (int y = 0; y < rows; y++) {
+                            for (int x = 0; x < cols; x++) {
+                                var cr = tmp[y, x].R;
+                                var cg = tmp[y, x].G;
+                                var cb = tmp[y, x].B;
+                                tmp[y, x] = Color.FromArgb(cr + r, cg + g, cb + b);
+                            }
+                        }
+
+                        tmps.Add(tmp);
+                    }
+
+                    colorMatrices = tmps;
+                    updateMatrixBox();
+                    firstFrame();
+
+                } catch {
+                    rVal.Value = 0;
+                    gVal.Value = 0;
+                    bVal.Value = 0;
+                }
+            } else {
+                var tmp = matrixColors;
+                int r = (int)rVal.Value;
+                int g = (int)gVal.Value;
+                int b = (int)bVal.Value;
+
+                try {
+                    for (int y = 0; y < rows; y++) {
+                        for (int x = 0; x < cols; x++) {
+                            var cr = tmp[y, x].R;
+                            var cg = tmp[y, x].G;
+                            var cb = tmp[y, x].B;
+                            tmp[y, x] = Color.FromArgb(cr + r, cg + g, cb + b);
+                        }
+                    }
+
+                    matrixColors = tmp;
+                    updateMatrixBox();
+
+                    if (mode == 2) {
+                        colorMatrices[currentFrame] = matrixColors;
+                    }
+
+                } catch {
+                    rVal.Value = 0;
+                    gVal.Value = 0;
+                    bVal.Value = 0;
+                }
+            }
         }
         //===============================================================================
     }
